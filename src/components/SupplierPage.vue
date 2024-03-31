@@ -1,21 +1,27 @@
 <template>
     <div class="flex justify-center mx-2">
-        <kSearchbar class="max-w-3xl mx-2" @search="handleSearch" placeholder="Search suppliers"></kSearchbar>
-        <!-- Add your other components and content here -->
+    <p>DEBUG</p>
     </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import {onMounted, ref, watch} from 'vue';
   import {
-    kPage,
-    kNavbar,
-    kNavbarBackLink,
-    kSearchbar,
-    kList,
-    kListItem,
-  } from 'konsta/vue';
+    kButton,
 
+    kSearchbar,
+
+  } from 'konsta/vue';
+const suppliers = ref([]);
+async function getAssets (){
+  let res = await fetch('http://localhost:5066/Supplier/GetSuppliers');
+  let data = await res.json();
+  suppliers.value = data;
+}
+
+onMounted(() => {
+  getAssets();
+});
 </script>
 
 <style>

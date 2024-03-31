@@ -9,7 +9,7 @@ import SupplierPage from "./components/SupplierPage.vue";
 
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createMemoryHistory(),
     routes,
 })
 
@@ -23,7 +23,7 @@ router.beforeEach(function (to, from, next) {
     if ((to.path !== '/login' && to.path !== 'login') && !localStorage.getItem('authenticated')) {
         next({ path: '/login' })
     } else if ((to.path === '/login' || to.path === 'login') && localStorage.getItem('authenticated')) {
-        next({ path: '/' })
+        next({ path: '/app' })
     } else {
         next()
     }

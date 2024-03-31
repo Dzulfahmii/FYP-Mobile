@@ -9,13 +9,11 @@ function logout(){
 <template>
   <k-app theme="material">
     <k-page>
-      <nav>
+      <k-navbar title="My App">
         <RouterLink to="/">Go to Home</RouterLink>
         <RouterLink to="/about">Go to About</RouterLink>
         <button @click="logout" >Logout</button>
-
-      </nav>
-      <k-navbar title="My App" />
+      </k-navbar>
       <RouterView />
     </k-page>
   </k-app>

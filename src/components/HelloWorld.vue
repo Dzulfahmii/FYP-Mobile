@@ -1,36 +1,37 @@
 <script setup>
 import { ref } from 'vue'
+import {kBlockTitle,kButton} from "konsta/vue";
+import {useRouter} from "vue-router";
 
 defineProps({
   msg: String,
 })
 
 const count = ref(0)
+const router = useRouter()
+
+async function goToSupplier() {
+  console.log('Go to Supplier');
+  await router.push({ name: 'Suppliers' });
+} // This will navigate to the 'Suppliers' route}
+
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <div>
 
-  <div class="card">
-    <button type="button" @click="count++">count iss {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+    <section class="my-10 grid grid-rows-2 grid-cols-3 gap-5 place-items-center">
+      <k-button class="h-20 w-20">Inventory</k-button>
+      <k-button class="h-20 w-20">Asset</k-button>
+      <k-button class="h-20 w-20">Request</k-button>
+      <k-button @click="goToSupplier" class="h-20 w-20">Suppliers</k-button>
+      <k-button class="h-20 w-20">Maintenance</k-button>
+      <k-button class="h-20 w-20">Settings</k-button>
+
+    </section>
+
   </div>
 
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
 <style scoped>

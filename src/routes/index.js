@@ -7,18 +7,18 @@ import SupplierPage from "../components/SupplierPage.vue";
 
 const routes =  [
     {
-        path: '/',
+        path: '/app',
         component: AppPage,
         children: [
             {
-                path: '',
+                path: '/',
                 name: 'Dashboard',
                 component: HelloWorld,
                 auth: true
             },
             {
-                path: 'users',
-                name: 'Users',
+                path: 'suppliers',
+                name: 'Suppliers',
                 component: SupplierPage,
                 auth: true
             }

@@ -1,7 +1,5 @@
 <template>
-  <transition name="fade-slide-up" mode="out-in">
   <RouterView />
-  </transition>
 </template>
 <script setup>
   import { kApp, kPage, kNavbar, kBlock,    kSearchbar,   kList,

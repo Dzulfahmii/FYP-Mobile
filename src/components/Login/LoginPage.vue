@@ -23,8 +23,9 @@ async function Login() {
   isLoading.value = true; // Show loading animation
 
   let result = await loginService.login(username.value, password.value);
+  localStorage.setItem('authenticated', "true");
+
   if(result.length > 0){
-    localStorage.setItem('authenticated', "true");
     setTimeout(() => {
       isLoading.value = false; // Hide loading animation after some time (simulating async action)
       router.push('/');
