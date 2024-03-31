@@ -1,0 +1,8 @@
+{
+  "appId": "com.fyp.app",
+  "appName": "FYP",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
