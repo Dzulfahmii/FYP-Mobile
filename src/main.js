@@ -9,7 +9,7 @@ import SupplierPage from "./components/SupplierPage.vue";
 
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHashHistory(),
     routes,
 })
 

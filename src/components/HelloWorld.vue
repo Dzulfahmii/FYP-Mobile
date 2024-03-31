@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import {kBlockTitle,kButton} from "konsta/vue";
+import {kBlockTitle,kButton,kCard,kLink} from "konsta/vue";
 import {useRouter} from "vue-router";
 
 defineProps({
@@ -20,13 +20,43 @@ async function goToSupplier() {
 <template>
   <div>
 
-    <section class="my-10 grid grid-rows-2 grid-cols-3 gap-5 place-items-center">
-      <k-button class="h-20 w-20">Inventory</k-button>
-      <k-button class="h-20 w-20">Asset</k-button>
-      <k-button class="h-20 w-20">Request</k-button>
-      <k-button @click="goToSupplier" class="h-20 w-20">Suppliers</k-button>
-      <k-button class="h-20 w-20">Maintenance</k-button>
-      <k-button class="h-20 w-20">Settings</k-button>
+    <section class=" my-10 grid grid-cols-2  place-items-stretch gap-1 ">
+      <k-card    outline header="Inventory | ">
+        <template #header>
+          <k-link>View</k-link>
+        </template>
+        An overview of inventory items
+      </k-card>
+      <k-card  outline  header="Asset | " footer-divider >
+        <template #header>
+          <k-link class="" >View</k-link>
+        </template>
+        An overview of assets
+      </k-card >
+      <k-card outline header="Request | ">
+        <template #header>
+          <k-link>View</k-link>
+        </template>
+        Submit and track asset requests
+      </k-card>
+      <k-card outline header="Suppliers | ">
+        <template #header>
+          <k-link>View</k-link>
+        </template>
+        Manage suppliers and vendor information
+      </k-card>
+      <k-card outline header="Maintenance | ">
+        <template #header>
+          <k-link @click="goToSupplier" >View</k-link>
+        </template>
+        Schedule and track maintenance tasks
+      </k-card>
+      <k-card   outline header="Settings | ">
+        <template #header>
+          <k-link>View</k-link>
+        </template>
+        Configure application settings
+      </k-card>
 
     </section>
 

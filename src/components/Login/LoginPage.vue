@@ -22,15 +22,17 @@ async function Login() {
   console.log('Login');
   isLoading.value = true; // Show loading animation
 
+/*
   let result = await loginService.login(username.value, password.value);
+*/
   localStorage.setItem('authenticated', "true");
 
-  if(result.length > 0){
-    setTimeout(() => {
-      isLoading.value = false; // Hide loading animation after some time (simulating async action)
-      router.push('/');
-    }, 1000); // Simulating a delay, replace with your actual login logic
-  }
+/*  if(result.length > 0){*/
+  setTimeout(() => {
+    isLoading.value = false; // Hide loading animation after some time (simulating async action)
+    router.push('/');
+  }, 1000); // Simulating a delay, replace with your actual login logic
+/*  }*/
 
 
 }

@@ -1,5 +1,10 @@
 <template>
-  <RouterView />
+  <router-view v-slot="{ Component }">
+  <transition name="slide" mode="out-in">
+    <component :is="Component" />
+  </transition>
+</router-view>
+
 </template>
 <script setup>
   import { kApp, kPage, kNavbar, kBlock,    kSearchbar,   kList,
@@ -36,15 +41,19 @@ import SupplierPage from './components/SupplierPage.vue';
   }
 </script>
 <style>
-  /* Add your custom styles here */
-  .fade-slide-up-enter-active {
-    transition: all 0.5s ease;
-  }
-  .fade-slide-up-leave-active {
-    transition: all 0.5s ease;
-  }
-  .fade-slide-up-enter, .fade-slide-up-leave-to {
-    transform: translateY(40px);
-    opacity: 0;
-  }
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
 </style>
