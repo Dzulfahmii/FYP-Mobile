@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <kSearchbar @search="handleSearch" placeholder="Search suppliers"></kSearchbar>
+    <div class="flex justify-center mx-2">
+        <kSearchbar class="max-w-3xl mx-2" @search="handleSearch" placeholder="Search suppliers"></kSearchbar>
         <!-- Add your other components and content here -->
     </div>
 </template>

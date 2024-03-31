@@ -1,10 +1,7 @@
 <template>
-  <k-app theme="material">
-    <k-page>
-      <k-navbar title="My App" />
-      <SupplierPage msg="Hello Vue 3 + Vite" />
-    </k-page>
-  </k-app>
+  <transition name="fade-slide-up" mode="out-in">
+  <RouterView />
+  </transition>
 </template>
 <script setup>
   import { kApp, kPage, kNavbar, kBlock,    kSearchbar,   kList,
@@ -24,9 +21,9 @@ import SupplierPage from './components/SupplierPage.vue';
     suppliers.value = data;
  }
 
- onMounted(() => {
-    getAssets();
-  });
+ // onMounted(() => {
+ //    getAssets();
+ //  });
 
   function handleSearch(e) {
     searchQuery.value = e.target.value;
@@ -40,3 +37,16 @@ import SupplierPage from './components/SupplierPage.vue';
     searchQuery.value = '';
   }
 </script>
+<style>
+  /* Add your custom styles here */
+  .fade-slide-up-enter-active {
+    transition: all 0.5s ease;
+  }
+  .fade-slide-up-leave-active {
+    transition: all 0.5s ease;
+  }
+  .fade-slide-up-enter, .fade-slide-up-leave-to {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+</style>
