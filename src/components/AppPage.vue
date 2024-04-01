@@ -9,10 +9,14 @@ const toggleMenu = () => {
   console.log('Toggle Menu');
   showMenu.value = !showMenu.value;
 };
-
+const isLoading = ref(false);
 const logout = () => {
   localStorage.removeItem('authenticated');
-  router.push('/login');
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+    router.push('/login');
+  }, 1000);
 };
 </script>
 
@@ -30,12 +34,16 @@ const logout = () => {
       </k-navbar>
       <!-- Menu -->
       <transition name="translateX">
-        <div v-show="showMenu"  class="absolute left-0  menu h-full w-56 bg-zinc-100 ">
+        <div v-show="showMenu"  class="bg-lime-100 absolute left-0  menu h-full w-56  ">
           <!-- Your menu items go here -->
           <k-list >
             <k-list-item @click="" link title="Assets" />
             <k-list-item link title="Suppliers" />
-            <k-list-item @click="logout" link title="Logout" />
+            <k-list-item @click="logout" link title="Logout" >
+              <template #after>
+                <span  v-if="isLoading" class=" absolute inset-x-36 loading-animation"></span>
+              </template>
+            </k-list-item>
 
           </k-list>
         </div>
@@ -73,6 +81,22 @@ const logout = () => {
 .translateX-leave-to {
   transform: translateX(-100%);
 }
+.loading-animation {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: rgb(163 230 53);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 0.5s linear infinite;
+}
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 </style>
