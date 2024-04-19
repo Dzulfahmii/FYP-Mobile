@@ -2,7 +2,7 @@ import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/HelloWorld.vue";
 import SupplierPage from "../components/SupplierPage.vue";
-
+import AssetPage from "../components/Asset/AssetPage.vue";
 
 
 const routes =  [
@@ -20,6 +20,12 @@ const routes =  [
                 path: 'suppliers',
                 name: 'Suppliers',
                 component: SupplierPage,
+                auth: true
+            },
+            {
+                path: 'asset',
+                name: 'Asset',
+                component: AssetPage,
                 auth: true
             }
         ]
