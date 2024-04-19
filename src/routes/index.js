@@ -3,6 +3,9 @@ import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/HelloWorld.vue";
 import SupplierPage from "../components/SupplierPage.vue";
 import AssetPage from "../components/Asset/AssetPage.vue";
+import OwnerPage from "../components/Asset/Owner/OwnerPage.vue";
+import LocationPage from "../components/Asset/Location/LocationPage.vue";
+import CategotyPage from "../components/Asset/Category/CategoryPage.vue";
 
 
 const routes =  [
@@ -27,7 +30,26 @@ const routes =  [
                 name: 'Asset',
                 component: AssetPage,
                 auth: true
+            },
+            {
+                path: 'owner',
+                name: 'Owner',
+                component: OwnerPage,
+                auth: true
+            },
+            {
+                path: 'location',
+                name: 'Location',
+                component: LocationPage,
+                auth: true
+            },
+            {
+                path: 'category',
+                name: 'Category',
+                component: CategotyPage,
+                auth: true
             }
+
         ]
     },
     {

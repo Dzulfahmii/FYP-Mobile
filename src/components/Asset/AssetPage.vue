@@ -30,7 +30,7 @@
         </k-list-input>
 
         <KButton>Cancel</KButton>
-        <KButton>Apply</KButton>
+        <KButton>Submit</KButton>
 
   </template>
 
