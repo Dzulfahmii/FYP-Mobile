@@ -1,51 +1,69 @@
-<template>
-
-    <k-block-title>New Asset</k-block-title>
-      <k-list-input label="Asset Name" type="text" placeholder="Your asset name">
-      </k-list-input>
-
-      <k-list-input
-        label="SKU" type="SKU" placeholder="SKU">
-      </k-list-input>
-
-      <k-list-input label="Owner" type="Owner" placeholder="Asset Owner"> 
-      </k-list-input>
-
-      <k-list-input label="Acquisation Date" type="Acquisation Date" placeholder="Acquisation date of Asset">
-        </k-list-input>
-
-     <k-list-input label="Serial Number" type="Serial Number" placeholder="Serial Number of Asset">
-        </k-list-input>
-
-        <k-list-input label="Physical Location" type="Physical Location" placeholder="Location of Asset">
-        </k-list-input>
-    
-        <k-list-input label="Asset Type" type="Asset Type" placeholder="Type of Asset">
-        </k-list-input>
-
-        <k-list-input label="Supply By" type="Supply By" placeholder="Asset supplied by"> 
-        </k-list-input>
-
-        <k-list-input label="Price" type="Price" placeholder="Price">
-        </k-list-input>
-
-        <KButton>Cancel</KButton>
-        <KButton>Submit</KButton>
-
-  </template>
-
-
-
 <script setup>
-    import { ref } from 'vue';
-    import {
-     
-      kBlockTitle,
-      kList,
-      kListInput, kApp as KApp, kButton as KButton,
-    } from "konsta/vue";
-    import {useRouter} from "vue-router";
-    const isLoading = ref(false);
-    const router = useRouter()
-    </script>
-  
+import {onMounted, ref} from 'vue';
+import {
+  kBlockTitle,
+  kList,
+  kListInput, kApp as KApp, kButton as KButton,
+    kCard
+} from "konsta/vue";
+
+const assets = ref([]);
+function getAssets(){
+  fetch('https://localhost:7043/Assets/GetAssets', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    assets.value = data;
+  });
+}
+
+onMounted(() => {
+  getAssets();
+});
+
+</script>
+
+<template>
+  <section>
+    <k-block-title class="text-xl">Assets</k-block-title>
+    <k-list>
+
+    <div class="bg-lime-300 px-3 py-2 m-2 rounded-md flex justify-center">
+      <div>
+        <h1 class="text-2xl font-bold text-center" >51238</h1>
+        <span>Total Assets</span>
+    </div>
+    </div>
+      <k-list-input placeholder="Search"></k-list-input>
+      <section>
+        <k-card v-for="i in assets" class="flex gap-1">
+          <section>
+            <div class="flex gap-2 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <h1>{{  }}</h1>
+            </div>
+            <h1>
+              {{ i['id'] }}
+            </h1>
+            <h1>
+              Remarks: Good Condition
+            </h1>
+            <k-button  outline >View</k-button>
+
+          </section>
+        </k-card>
+      </section>
+    </k-list>
+
+  </section>
+</template>
+
+<style scoped>
+
+</style>

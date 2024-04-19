@@ -2,19 +2,21 @@ import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/HelloWorld.vue";
 import SupplierPage from "../components/SupplierPage.vue";
+import CreateAssetPage from "../components/Asset/CreateAssetPage.vue";
 import AssetPage from "../components/Asset/AssetPage.vue";
 import OwnerPage from "../components/Asset/Owner/OwnerPage.vue";
 import LocationPage from "../components/Asset/Location/LocationPage.vue";
-import CategotyPage from "../components/Asset/Category/CategoryPage.vue";
+import CategoryPage from "../components/Asset/Category/CategoryPage.vue";
+import ReportPage from "../components/Report/ReportPage.vue";
 
 
 const routes =  [
     {
-        path: '/app',
+        path: '/',
         component: AppPage,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Dashboard',
                 component: HelloWorld,
                 auth: true
@@ -26,8 +28,34 @@ const routes =  [
                 auth: true
             },
             {
-                path: 'asset',
+                path: '/asset',
                 name: 'Asset',
+                component: AssetPage,
+                children: [
+                    {
+                        path: 'create',
+                        name: 'CreateAsset',
+                        component: CreateAssetPage,
+                        auth: true
+                    },
+                    {
+                        path: 'edit/:id',
+                        name: 'EditAsset',
+                        component: AssetPage,
+                        auth: true
+                    }
+                ],
+                auth: true
+            },
+            {
+                path: 'asset/create',
+                name: 'CreateAsset',
+                component: CreateAssetPage,
+                auth: true
+            },
+            {
+                path: 'asset/edit/:id',
+                name: 'EditAsset',
                 component: AssetPage,
                 auth: true
             },
@@ -46,7 +74,13 @@ const routes =  [
             {
                 path: 'category',
                 name: 'Category',
-                component: CategotyPage,
+                component: CategoryPage,
+                auth: true
+            },
+            {
+                path: 'report',
+                name: 'Report',
+                component: ReportPage,
                 auth: true
             }
 

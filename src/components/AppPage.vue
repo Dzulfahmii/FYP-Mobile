@@ -23,8 +23,8 @@ const logout = () => {
 <template>
   <k-app theme="material">
     <k-page>
-      <k-navbar title="AMS">
-        <div @click="toggleMenu" class="hamburger-menu cursor-pointer m-4">
+      <k-navbar >
+        <div @click="toggleMenu" class="z-50 hamburger-menu cursor-pointer m-4">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
@@ -34,16 +34,20 @@ const logout = () => {
       </k-navbar>
       <!-- Menu -->
       <transition name="translateX">
-        <div v-show="showMenu"  class="bg-lime-100 absolute left-0  menu h-full w-56  ">
+        <div v-show="showMenu"  class="z-50  bg-lime-100 absolute left-0  menu h-full w-56  ">
           <!-- Your menu items go here -->
           <k-list >
-            <k-list-item @click="" link title="Assets" />
-            <k-list-item link title="Suppliers" />
+            <k-list-item @click="()=>router.push({name:'Asset'})" link title="Assets" />
+            <k-list-item @click="()=>router.push({name:'Owner'})" link title="Owner" />
+            <k-list-item link title="Category" />
+
+            <k-list-item link title="Location" />
             <k-list-item @click="logout" link title="Logout" >
               <template #after>
                 <span  v-if="isLoading" class=" absolute inset-x-36 loading-animation"></span>
               </template>
             </k-list-item>
+
 
           </k-list>
         </div>
@@ -61,9 +65,7 @@ const logout = () => {
 <style scoped>
 
 .hamburger-menu {
-  position: absolute;
-  right: 0;
-  top: 0;
+
 }
 
 
