@@ -1,7 +1,6 @@
 <script setup>
     import { ref } from 'vue';
     import {
-     
       kBlockTitle,
       kList,
       kListInput, kApp as KApp, kButton as KButton,
@@ -29,8 +28,10 @@
     </script>
 
 <template>
+
+  <section>
     <k-block-title>Owner</k-block-title>
-    <k-list>
+    <k-list >
         <k-list-input  :value="name"
                        @input="name = $event.target.value" label="Name" type="text" placeholder="Owner of Asset">
         </k-list-input>
@@ -39,10 +40,12 @@
                       @input="telephoneNumber = $event.target.value" label="Telephone Number" type="telephone" placeholder="Telephone number of owner">
         </k-list-input>
 
-    
-        <KButton>Cancel</KButton>
-        <KButton @click="createOwner" >Apply</KButton>
-    </k-list>
+      <section class="flex gap-2 mx-5 my-4">
+          <KButton>Cancel</KButton>
+          <KButton @click="createOwner" >Apply</KButton>
+        </section>
 
+    </k-list>
+  </section>
 
 </template>
