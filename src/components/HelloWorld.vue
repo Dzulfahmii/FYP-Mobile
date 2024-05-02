@@ -35,7 +35,7 @@ async function goToSupplier() {
       </k-card >
       <k-card outline header="Request | ">
         <template #header>
-          <k-link>View</k-link>
+          <k-link @click="async ()=> await router.push({name:'Report'})">View</k-link>
         </template>
         Submit and track asset requests
       </k-card>
