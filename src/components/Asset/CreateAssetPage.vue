@@ -22,17 +22,25 @@
         <option v-for="owner in owners" :key="owner.id" :value="owner.id">{{owner.name}}</option>
       </k-list-input>
 
-    <k-list-input label="Acquisation Date" type="date" placeholder="Acquisation date of Asset">
+    <k-list-input 
+      v-model="acquisitionDate"
+      label="Acquisation Date" type="date" placeholder="Acquisation date of Asset">
     </k-list-input>
 
-    <k-list-input label="Serial Number" type="Serial Number" placeholder="Serial Number of Asset">
+    <k-list-input 
+      v-model="serialNumber"
+      label="Serial Number" type="Serial Number" placeholder="Serial Number of Asset">
     </k-list-input>
 
-    <k-list-input label="Physical Location" type="select" placeholder="Location of Asset">
+    <k-list-input 
+      v-model="location"
+      label="Physical Location" type="select" placeholder="Location of Asset">
       <option v-for="location in locations" :key="location.id" :value="location.id">{{location.locationName}}</option>
     </k-list-input>
 
-    <k-list-input label="Asset Type" type="select" placeholder="Type of Asset">
+    <k-list-input 
+      v-model="category"
+      label="Asset Type" type="select" placeholder="Type of Asset">
       <option v-for="category in categories" :key="category.id" :value="category.id">{{category.name}}</option>
     </k-list-input>
 
@@ -45,11 +53,13 @@
       <option v-for="supplier in suppliers" :key="supplier.id" :value="supplier.id">{{supplier.name}}</option>
     </k-list-input>
 
-    <k-list-input label="Price" type="number" placeholder="Price">
+    <k-list-input 
+      v-model="price"
+      label="Price" type="number" placeholder="Price">
     </k-list-input>
     <section class="flex gap-2 mx-5 my-4">
       <KButton>Cancel</KButton>
-      <KButton>Apply</KButton>
+      <KButton @click="createAsset">Apply</KButton>
     </section>
     </k-list>
 
@@ -81,6 +91,10 @@ const acquisitionDate = ref(new Date().toString());
 const serialNumber = ref('');
 const location = ref('');
 const router = useRouter()
+const category = ref('');
+const supplier = ref('');
+const price = ref(0);
+
 
 function getOwners(){
   fetch('https://localhost:7043/Owner/GetOwners', {
@@ -133,7 +147,7 @@ function getCategories() {
     categories.value = data;
   });
 
-  function createAsset() {
+  async function createAsset() {
     fetch('https://localhost:7043/Asset/CreateAsset', {
       method: 'POST',
       headers: {
