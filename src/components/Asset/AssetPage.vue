@@ -30,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section>
+  <section class="px-2">
     <k-block-title class="text-xl">Assets</k-block-title>
     <k-list>
     <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
@@ -39,8 +39,11 @@ onMounted(() => {
         <span>Total Assets</span>
     </div>
     </div>
-      <k-list-input placeholder="Search"></k-list-input>
-      <k-button @click="()=>router.push({name:'CreateAsset'})" class="w-fit mx-4" outline>Create Asset</k-button>
+      <div class="px-5">
+        <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
+        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1" outline>Create Asset</k-button>
+      </div>
+
       <section>
         <k-card  class=" flex flex-col ">
           <section class="flex flex-col gap-1 p-1">
