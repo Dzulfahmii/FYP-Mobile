@@ -8,6 +8,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import SupplierPage from "./components/SupplierPage.vue";
 
 
+
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
