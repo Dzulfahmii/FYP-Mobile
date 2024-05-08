@@ -4,12 +4,20 @@ import { ref } from "vue";
 import { kApp, kPage, kNavbar,kList,kListItem } from "konsta/vue";
 const router = useRouter();
 const showMenu = ref(false);
+import { onClickOutside } from '@vueuse/core'
 
 const toggleMenu = () => {
   console.log('Toggle Menu');
   showMenu.value = !showMenu.value;
 };
 const isLoading = ref(false);
+const target = ref(null)
+const nav = ref(null)
+
+onClickOutside(target, () => {
+  showMenu.value = false;
+}, { ignore: [nav] })
+
 const logout = () => {
   localStorage.removeItem('authenticated');
   isLoading.value = true;
@@ -24,7 +32,7 @@ const logout = () => {
   <k-app theme="material">
     <k-page>
       <k-navbar >
-        <div @click="toggleMenu" class="z-50 hamburger-menu cursor-pointer m-4">
+        <div ref="nav" @click="toggleMenu" class="z-50 hamburger-menu cursor-pointer m-4">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
@@ -34,9 +42,14 @@ const logout = () => {
       </k-navbar>
       <!-- Menu -->
       <transition name="translateX">
-        <div v-show="showMenu"  class="z-50  bg-lime-100 absolute left-0  menu h-full w-56  ">
+        <div class="bg-black/50  fixed  h-full w-full  z-50 " v-show="showMenu">
+          <transition name="translateNav">
+
+        <div v-show="showMenu" ref="target"   class="z-50  mx-3 my-2 rounded-md  bg-zinc-200  h-fit overflow-hidden menu  w-56  ">
           <!-- Your menu items go here -->
+
           <k-list >
+            <k-list-item @click="()=>router.push({name:'Dashboard'})" link title="Home" />
             <k-list-item @click="()=>router.push({name:'Asset'})" link title="Assets" />
             <k-list-item @click="()=>router.push({name:'Owner'})" link title="Owner" />
             <k-list-item link title="Category" />
@@ -51,6 +64,10 @@ const logout = () => {
 
           </k-list>
         </div>
+          </transition>
+
+        </div>
+
       </transition>
 
       <router-view v-slot="{ Component }">
@@ -71,16 +88,30 @@ const logout = () => {
 
 .translateX-enter-active,
 .translateX-leave-active {
-  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: opacity 0.1s ;
 }
 
 .translateX-enter-to,
 .translateX-leave-from {
-  transform: translateX(0);
+  opacity: 1;
 }
 
 .translateX-enter-from,
 .translateX-leave-to {
+  opacity: 0;
+}
+.translateNav-enter-active,
+.translateNav-leave-active {
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.translateNav-enter-to,
+.translateNav-leave-from {
+  transform: translateX(0);
+}
+
+.translateNav-enter-from,
+.translateNav-leave-to {
   transform: translateX(-100%);
 }
 .loading-animation {

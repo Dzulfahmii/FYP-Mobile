@@ -43,17 +43,20 @@ import SupplierPage from './components/SupplierPage.vue';
 <style>
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .slide-enter-to,
 .slide-leave-from {
-  transform: translateX(0);
+  opacity: 1;
+  scale:  1;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateX(-100%);
+  opacity: 0;
+  scale:  0.9;
+
 }
 
 </style>
