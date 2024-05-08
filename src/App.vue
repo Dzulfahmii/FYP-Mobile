@@ -13,7 +13,7 @@
     kButton
  } from 'konsta/vue';
   import { onMounted, ref } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import HelloWorld from './components/Dashboard.vue';
 import SupplierPage from './components/SupplierPage.vue';
   const searchQuery = ref('');
   const suppliers = ref([]);

@@ -31,7 +31,11 @@ onMounted(() => {
 
 <template>
   <section class="px-2">
-    <k-block-title class="text-xl">Assets</k-block-title>
+
+    <k-block-title class="text-xl">
+
+      Assets
+    </k-block-title>
     <k-list>
     <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
       <div>

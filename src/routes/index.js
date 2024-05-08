@@ -1,6 +1,6 @@
 import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
-import HelloWorld from "../components/HelloWorld.vue";
+import HelloWorld from "../components/Dashboard.vue";
 import SupplierPage from "../components/SupplierPage.vue";
 import CreateAssetPage from "../components/Asset/CreateAssetPage.vue";
 import AssetPage from "../components/Asset/AssetPage.vue";

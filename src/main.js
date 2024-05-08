@@ -4,7 +4,7 @@ import './style.css'
 import App from './App.vue'
 
 import routes from "./routes/index.js";
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from "./components/Dashboard.vue";
 import SupplierPage from "./components/SupplierPage.vue";
 
 
