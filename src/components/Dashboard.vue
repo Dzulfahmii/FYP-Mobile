@@ -60,7 +60,9 @@ async function goToSupplier() {
       </k-card>
       <k-card header="Asset Scan | ">
         <template #header>
-          <k-link @click=" async () => await router.push({name:'Scanner'})">View</k-link>
+          <k-link @click=" async () => {
+
+            await router.push({name:'Scanner'})}">View</k-link>
         </template>
         Scan assets using QR codes
       </k-card>

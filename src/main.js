@@ -1,18 +1,13 @@
 import { createApp } from 'vue'
-import { App }  from '@capacitor/app';
+import { result} from './mobile.js'
 import { createMemoryHistory, createRouter,createWebHashHistory } from 'vue-router'
 import './style.css'
 import Application from './Application.vue'
-
 import routes from "./routes/index.js";
 import HelloWorld from "./components/Dashboard.vue";
 import SupplierPage from "./components/SupplierPage.vue";
 
-App.addListener('backButton', ({ isActive }) => {
-    if(!isActive) {
-        console.log('back button pressed')
-    }
-});
+
 
 
 const router = createRouter({
@@ -35,5 +30,7 @@ router.beforeEach(function (to, from, next) {
         next()
     }
 })
+
+
 
 createApp(Application).use(router).mount('#app')
