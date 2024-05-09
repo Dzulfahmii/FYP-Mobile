@@ -1,8 +1,8 @@
 <template>
-    <k-page>
-        <k-navbar title="SUPPLIER" />
-        <k-block-title>Supplier Asset View</k-block-title>
-        <div class ="block overflow-x-auto mt-8">
+    <section>
+
+        <k-block-title class="mx-2 text-xl">Supplier Asset View</k-block-title>
+        <k-card class ="block overflow-x-auto mt-8">
             <k-table>
                 <k-table-head>
                     <k-table-row header>
@@ -25,8 +25,8 @@
                     </k-table-row>
                     </k-table-body>
             </k-table>
-        </div>
-    </k-page>
+        </k-card>
+    </section>
 </template>
 
 <script setup>

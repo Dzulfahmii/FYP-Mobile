@@ -1,18 +1,19 @@
 import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/Dashboard.vue";
-import SupplierPage from "../components/SupplierPage.vue";
-import CreateAssetPage from "../components/Asset/CreateAssetPage.vue";
-import AssetPage from "../components/Asset/AssetPage.vue";
-import OwnerPage from "../components/Asset/Owner/OwnerPage.vue";
-import LocationPage from "../components/Asset/Location/LocationPage.vue";
-import CategoryPage from "../components/Asset/Category/CategoryPage.vue";
+import CreateAssetPage from "../components/Assets/CreateAssetPage.vue";
+import AssetPage from "../components/Assets/Asset/AssetPage.vue";
+import OwnerPage from "../components/Assets/Owner/OwnerPage.vue";
+import LocationPage from "../components/Assets/Location/CreateLocationPage.vue";
+import CategoryPage from "../components/Assets/Category/CreateCategoryPage.vue";
 import ReportPage from "../components/Report/ReportPage.vue";
 import AssetScan from "../components/AssetScan/AssetScan.vue";
-import ViewLocation from "../components/ViewLocation/ViewLocationPage.vue";
-import ViewCategory from "../components/Asset/Category/ViewCategoryPage.vue";
-import ViewOwner from "../components/Asset/Owner/ViewOwnerPage.vue";
-import ViewSupplier from "../components/Asset/Supplier/ViewSupplierPage.vue";
+import ViewLocation from "../components/Assets/Location/LocationPage.vue";
+import ViewCategory from "../components/Assets/Category/CategoryPage.vue";
+import CreateOwner from "../components/Assets/Owner/CreateOwnerPage.vue";
+import SupplierPage from "../components/Assets/Supplier/SupplierPage.vue";
+import CreateSupplierPage from "../components/Assets/Supplier/CreateSupplierPage.vue";
+import AssetsPage from "../components/Assets/AssetsPage.vue";
 
 
 const routes =  [
@@ -27,6 +28,12 @@ const routes =  [
                 auth: true
             },
             {
+                path: 'suppliers/create',
+                name: 'CreateSupplier',
+                component: CreateSupplierPage,
+                auth: true
+            },
+            {
                 path: 'suppliers',
                 name: 'Suppliers',
                 component: SupplierPage,
@@ -34,7 +41,7 @@ const routes =  [
             },
             {
                 path: '/asset',
-                name: 'Asset',
+                name: 'Assets',
                 component: AssetPage,
                 children: [
                     {
@@ -59,8 +66,14 @@ const routes =  [
                 auth: true
             },
             {
-                path: 'asset/edit/:id',
+                path: 'asset/:id/edit',
                 name: 'EditAsset',
+                component: AssetsPage,
+                auth: true
+            },
+            {
+              path: 'asset/:id/',
+              name: 'asset',
                 component: AssetPage,
                 auth: true
             },
@@ -68,6 +81,12 @@ const routes =  [
                 path: 'owner',
                 name: 'Owner',
                 component: OwnerPage,
+                auth: true
+            },
+            {
+                path: 'owner/create',
+                name: 'CreateOwner',
+                component: CreateOwner,
                 auth: true
             },
             {
@@ -106,18 +125,8 @@ const routes =  [
                 component: ViewCategory,
                 auth: true
             },
-            {
-                path: 'viewOwner',
-                name: 'ViewOwner',
-                component: ViewOwner,
-                auth: true
-            },
-            {
-                path: 'viewSupplier',
-                name: 'ViewSupplier',
-                component: ViewSupplier,
-                auth: true
-            },
+
+
             // {
             //     path: 'viewReport',
             //     name: 'ViewReport',

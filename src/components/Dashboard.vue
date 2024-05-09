@@ -30,7 +30,7 @@ async function goToSupplier() {
       </k-card>
       <k-card    header="Asset | " footer-divider >
         <template #header>
-          <k-link class="" @click="async ()=> await router.push({name:'Asset'})" >View</k-link>
+          <k-link class="" @click="async ()=> await router.push({name:'Assets'})" >View</k-link>
         </template>
         An overview of assets
       </k-card >

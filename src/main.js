@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { result} from './mobile.js'
 import { createMemoryHistory, createRouter,createWebHashHistory } from 'vue-router'
 import './style.css'
 import Application from './Application.vue'

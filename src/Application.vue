@@ -62,6 +62,15 @@ function handleDisable() {
 }
 </script>
 <style>
+// Hide all elements
+body.barcode-scanner-active {
+  visibility: hidden;
+}
+
+// Show only the barcode scanner modal
+.barcode-scanner-modal {
+  visibility: visible;
+}
 .slide-enter-active,
 .slide-leave-active {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
