@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildFeatures {
+        dataBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
     namespace "com.fyp.app"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {

@@ -8,6 +8,7 @@ import OwnerPage from "../components/Asset/Owner/OwnerPage.vue";
 import LocationPage from "../components/Asset/Location/LocationPage.vue";
 import CategoryPage from "../components/Asset/Category/CategoryPage.vue";
 import ReportPage from "../components/Report/ReportPage.vue";
+import AssetScan from "../components/AssetScan/AssetScan.vue";
 
 
 const routes =  [
@@ -81,6 +82,12 @@ const routes =  [
                 path: 'report',
                 name: 'Report',
                 component: ReportPage,
+                auth: true
+            },
+            {
+                path: 'scanner',
+                name: 'Scanner',
+                component: AssetScan,
                 auth: true
             }
 

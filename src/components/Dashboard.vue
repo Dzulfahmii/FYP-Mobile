@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import {kBlockTitle,kButton,kCard,kLink} from "konsta/vue";
 import {useRouter} from "vue-router";
+import AssetScan from "./AssetScan/AssetScan.vue";
 
 defineProps({
   msg: String,
@@ -56,6 +57,12 @@ async function goToSupplier() {
           <k-link>View</k-link>
         </template>
         Configure application settings
+      </k-card>
+      <k-card header="Asset Scan | ">
+        <template #header>
+          <k-link @click=" async () => await router.push({name:'Scanner'})">View</k-link>
+        </template>
+        Scan assets using QR codes
       </k-card>
 
     </section>
