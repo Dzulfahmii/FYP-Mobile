@@ -9,6 +9,10 @@ import LocationPage from "../components/Asset/Location/LocationPage.vue";
 import CategoryPage from "../components/Asset/Category/CategoryPage.vue";
 import ReportPage from "../components/Report/ReportPage.vue";
 import AssetScan from "../components/AssetScan/AssetScan.vue";
+import ViewLocation from "../components/ViewLocation/ViewLocationPage.vue";
+import ViewCategory from "../components/Asset/Category/ViewCategoryPage.vue";
+import ViewOwner from "../components/Asset/Owner/ViewOwnerPage.vue";
+import ViewSupplier from "../components/Asset/Supplier/ViewSupplierPage.vue";
 
 
 const routes =  [
@@ -89,7 +93,37 @@ const routes =  [
                 name: 'Scanner',
                 component: AssetScan,
                 auth: true
-            }
+            },
+            {
+                path: 'viewLocation',
+                name: 'ViewLocation',
+                component: ViewLocation,
+                auth: true
+            },
+            {
+                path: 'viewCategory',
+                name: 'ViewCategory',
+                component: ViewCategory,
+                auth: true
+            },
+            {
+                path: 'viewOwner',
+                name: 'ViewOwner',
+                component: ViewOwner,
+                auth: true
+            },
+            {
+                path: 'viewSupplier',
+                name: 'ViewSupplier',
+                component: ViewSupplier,
+                auth: true
+            },
+            // {
+            //     path: 'viewReport',
+            //     name: 'ViewReport',
+            //     component: ViewRe,
+            //     auth: true
+            // }
 
         ]
     },
