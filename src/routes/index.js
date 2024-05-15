@@ -14,7 +14,7 @@ import CreateOwner from "../components/Assets/Owner/CreateOwnerPage.vue";
 import SupplierPage from "../components/Assets/Supplier/SupplierPage.vue";
 import CreateSupplierPage from "../components/Assets/Supplier/CreateSupplierPage.vue";
 import AssetsPage from "../components/Assets/AssetsPage.vue";
-
+import Asset from "../components/Assets/Asset/Asset.vue";
 
 const routes =  [
     {
@@ -74,7 +74,7 @@ const routes =  [
             {
               path: 'asset/:id/',
               name: 'asset',
-                component: AssetPage,
+                component: Asset,
                 auth: true
             },
             {
@@ -125,6 +125,7 @@ const routes =  [
                 component: ViewCategory,
                 auth: true
             },
+           
 
 
             // {
