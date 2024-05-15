@@ -3,7 +3,9 @@
 </script>
 
 <template>
+<section>
 
+</section>
 </template>
 
 <style scoped>

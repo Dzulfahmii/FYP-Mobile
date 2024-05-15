@@ -64,7 +64,7 @@ onMounted(() => {
 
               <p class="font-bold">Location: <span class="font-normal">Belakang Rumah</span></p>
             </div>
-            <k-button class="w-full mx-auto" outline >View</k-button>
+            <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:1}})" outline >View</k-button>
           </section>
 
         </k-card>

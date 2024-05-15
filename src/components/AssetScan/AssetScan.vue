@@ -7,9 +7,11 @@ import {
 import {kButton} from "konsta/vue";
 import {ref} from "vue";
 import Modal from "./Modal.vue";
+import {useRouter} from "vue-router";
 
 const openModal = ref(false);
 const scanResult = ref('');
+const router = useRouter();
 const startScan = async () => {
   // The camera is visible behind the WebView, so that you can customize the UI in the WebView.
   // However, this means that you have to hide all elements that should not be visible.
@@ -56,6 +58,7 @@ const scanSingleBarcode = async () => {
           scanResult.value = result.barcode.rawValue;
           await BarcodeScanner.stopScan();
           openModal.value = false;
+
           resolve(result.barcode);
         },
     );
@@ -65,10 +68,14 @@ const scanSingleBarcode = async () => {
 };
 
 const scan = async () => {
-  const { barcodes } = await BarcodeScanner.scan({
-    formats: [BarcodeFormat.QrCode],
-  });
-  return barcodes;
+  const result = await scanSingleBarcode();
+  console.log(result);
+  if (result) {
+    await router.push({
+      name: 'Asset',
+      params: {id: result.rawValue},
+    });
+  }
 };
 </script>
 

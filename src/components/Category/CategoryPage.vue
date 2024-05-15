@@ -1,6 +1,5 @@
 <template>
-    <k-page>
-        <k-navbar title="CATEGORY" />
+        <section>
         <k-block-title>Category Asset View</k-block-title>
         <div class ="block overflow-x-auto mt-8">
             <k-table>
@@ -12,6 +11,7 @@
                 <k-table-body>
                     <k-table-row>
                         <k-table-cell>Laptop</k-table-cell>
+                       <k-table-cell><button class="rounded bg-lime-300 p-5" @click="console.log('TEST')">Edit</button></k-table-cell>
                     </k-table-row>
                     <k-table-row>
                         <k-table-cell>Printer</k-table-cell>
@@ -22,7 +22,7 @@
                     </k-table-body>
             </k-table>
         </div>
-    </k-page>
+        </section>
 </template>
 
 <script setup>

@@ -1,8 +1,7 @@
 <template>
-    <k-page>
-        <k-navbar title="LOCATION"></k-navbar>
+    <section>
         <k-block-title>Location Asset View</k-block-title>
-        <div class ="block overflow-x-auto mt-8" :content-wrap="false">
+        <div class ="block overflow-x-auto mt-8" >
             <k-table>
                 <k-table-head>
                     <k-table-row header>
@@ -22,7 +21,7 @@
                     </k-table-body>
             </k-table>
         </div>
-    </k-page>
+    </section>
 </template>
 
 <script setup>

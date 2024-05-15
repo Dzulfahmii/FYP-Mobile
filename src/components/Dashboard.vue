@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import {kBlockTitle,kButton,kCard,kLink} from "konsta/vue";
 import {useRouter} from "vue-router";
 import AssetScan from "./AssetScan/AssetScan.vue";
+import {Capacitor} from "@capacitor/core";
 
 defineProps({
   msg: String,
@@ -58,7 +59,7 @@ async function goToSupplier() {
         </template>
         Configure application settings
       </k-card>
-      <k-card header="Asset Scan | ">
+      <k-card v-if="Capacitor.isNativePlatform()" header="Asset Scan | ">
         <template #header>
           <k-link @click=" async () => {
 

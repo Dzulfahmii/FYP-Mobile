@@ -1,4 +1,5 @@
 <template>
+  <section>
     <k-block-title>Category</k-block-title>
   <k-list>
     <k-list-input :value="categoryName"
@@ -8,7 +9,7 @@
      <KButton>Cancel</KButton>
      <KButton @click="createCategory">Apply</KButton>
     </section>
-
+  </section>
 </template>
 
 <script setup>

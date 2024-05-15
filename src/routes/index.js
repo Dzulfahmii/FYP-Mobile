@@ -2,19 +2,19 @@ import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/Dashboard.vue";
 import CreateAssetPage from "../components/Assets/CreateAssetPage.vue";
-import AssetPage from "../components/Assets/Asset/AssetPage.vue";
-import OwnerPage from "../components/Assets/Owner/OwnerPage.vue";
-import LocationPage from "../components/Assets/Location/CreateLocationPage.vue";
-import CategoryPage from "../components/Assets/Category/CreateCategoryPage.vue";
+import AssetPage from "../components/Assets/AssetPage.vue";
+import OwnerPage from "../components/Owner/OwnerPage.vue";
+import LocationPage from "../components/Location/LocationPage.vue";
+import CategoryPage from "../components/Category/CategoryPage.vue";
 import ReportPage from "../components/Report/ReportPage.vue";
 import AssetScan from "../components/AssetScan/AssetScan.vue";
-import ViewLocation from "../components/Assets/Location/LocationPage.vue";
-import ViewCategory from "../components/Assets/Category/CategoryPage.vue";
-import CreateOwner from "../components/Assets/Owner/CreateOwnerPage.vue";
-import SupplierPage from "../components/Assets/Supplier/SupplierPage.vue";
-import CreateSupplierPage from "../components/Assets/Supplier/CreateSupplierPage.vue";
+import CreateOwner from "../components/Owner/CreateOwnerPage.vue";
+import SupplierPage from "../components/Supplier/SupplierPage.vue";
+import CreateSupplierPage from "../components/Supplier/CreateSupplierPage.vue";
 import AssetsPage from "../components/Assets/AssetsPage.vue";
-import Asset from "../components/Assets/Asset/Asset.vue";
+import Asset from "../components/Assets/Asset.vue";
+import CreateCategoryPage from "../components/Category/CreateCategoryPage.vue";
+import CreateLocationPage from "../components/Location/CreateLocationPage.vue";
 
 const routes =  [
     {
@@ -40,44 +40,6 @@ const routes =  [
                 auth: true
             },
             {
-                path: '/asset',
-                name: 'Assets',
-                component: AssetPage,
-                children: [
-                    {
-                        path: 'create',
-                        name: 'CreateAsset',
-                        component: CreateAssetPage,
-                        auth: true
-                    },
-                    {
-                        path: 'edit/:id',
-                        name: 'EditAsset',
-                        component: AssetPage,
-                        auth: true
-                    }
-                ],
-                auth: true
-            },
-            {
-                path: 'asset/create',
-                name: 'CreateAsset',
-                component: CreateAssetPage,
-                auth: true
-            },
-            {
-                path: 'asset/:id/edit',
-                name: 'EditAsset',
-                component: AssetsPage,
-                auth: true
-            },
-            {
-              path: 'asset/:id/',
-              name: 'asset',
-                component: Asset,
-                auth: true
-            },
-            {
                 path: 'owner',
                 name: 'Owner',
                 component: OwnerPage,
@@ -95,15 +57,10 @@ const routes =  [
                 component: LocationPage,
                 auth: true
             },
+
             {
-                path: 'category',
-                name: 'Category',
-                component: CategoryPage,
-                auth: true
-            },
-            {
-                path: 'report',
-                name: 'Report',
+                path: 'reports',
+                name: 'Reports',
                 component: ReportPage,
                 auth: true
             },
@@ -114,18 +71,64 @@ const routes =  [
                 auth: true
             },
             {
-                path: 'viewLocation',
-                name: 'ViewLocation',
-                component: ViewLocation,
-                auth: true
+                path:'locations',
+                children: [
+{
+                        path: '',
+                        name: 'locations',
+                        component: LocationPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'createLocation',
+                        component: CreateLocationPage,
+                        meta: { requiresAuth: true }
+                    }
+                ]
             },
             {
-                path: 'viewCategory',
-                name: 'ViewCategory',
-                component: ViewCategory,
-                auth: true
+                path: 'categories',
+                children: [
+                    {
+                        path: '',
+                        name: 'categories',
+                        component: CategoryPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'createCategory',
+                        component: CreateCategoryPage,
+                        meta: { requiresAuth: true }
+                    }
+                ]
             },
-           
+            {
+                path: 'assets',
+                children: [
+                    {
+                        path: '',
+                        name: 'Assets',
+                        component: AssetsPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'CreateAsset',
+                        component: CreateAssetPage,
+                        meta: { requiresAuth: true }
+                    },
+
+                    {
+                        path: ':id',
+                        name: 'Asset',
+                        component: Asset,
+                        meta: { requiresAuth: true }
+                    },
+                    // Other Asset Routes...
+                ]
+            },
 
 
             // {

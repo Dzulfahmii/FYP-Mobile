@@ -39,18 +39,22 @@ async function Login() {
 </script>
 
 <template>
-  <k-app>
-    <k-page class="flex flex-col justify-center items-center">
-      <k-block-title class="text-lime-500">Login</k-block-title>
+  <k-app >
+    <k-page colors="bgIos"  class="flex flex-col justify-center items-center">
+      <section class="flex flex-col border px-5 py-5 rounded-md bg-zinc-100">
+
+      <k-block-title large class="text-2xl mx-auto ">Login</k-block-title>
       <k-list>
-        <k-list-input :value="username"   @input="username = $event.target.value" label="Username" type="text" placeholder="Your username"></k-list-input>
-        <k-list-input :value="password"   @input="password = $event.target.value" label="Password" type="password" placeholder="Your password"></k-list-input>
+        <k-list-input :value="username" class=""  @input="username = $event.target.value" label="Username" type="text" placeholder="Your username"></k-list-input>
+        <k-list-input :value="password" class=" mx-auto"  @input="password = $event.target.value" label="Password" type="password" placeholder="Your password"></k-list-input>
       </k-list>
-      <k-button @click="Login" tonal-material class="m-2 max-w-64 bg-lime-400">
+      <k-button @click="Login" tonal-material class="mx-auto max-w-64 bg-lime-400">
         <p class="">Sign In</p>
         <span  v-if="isLoading" class=" absolute inset-x-52 mx-2 loading-animation"></span>
       </k-button>
-      <k-button tonal-material clear class="touch-ripple-current m-2 max-w-64 text-lime-500">Forgot Password?</k-button>
+      <k-button tonal-material clear class="touch-ripple-current mx-auto  max-w-64 text-lime-500">Forgot Password?</k-button>
+      </section>
+
     </k-page>
   </k-app>
 
