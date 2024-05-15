@@ -70,8 +70,8 @@ const scanSingleBarcode = async () => {
 const scan = async () => {
   const result = await scanSingleBarcode();
   console.log(result);
-  if (result) {
-    await router.push({
+  if (result != null) {
+     await router.push({
       name: 'Asset',
       params: {id: result.rawValue},
     });
@@ -82,7 +82,7 @@ const scan = async () => {
 <template>
 <!-- capacitor camera -->
   <div class="flex flex-col justify-center mx-2 gap-2">
-    <k-button class="btn" @click="scanSingleBarcode">Scan Single Barcode</k-button>
+    <k-button class="btn" @click="scan">Scan Single Barcode</k-button>
     <Teleport to="body">
       <div class="barcode-scanner-modal" v-if="openModal">
         <Modal @callback="stopScan" />
