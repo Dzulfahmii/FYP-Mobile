@@ -28,28 +28,38 @@ const routes =  [
                 auth: true
             },
             {
-                path: 'suppliers/create',
-                name: 'CreateSupplier',
-                component: CreateSupplierPage,
-                auth: true
-            },
-            {
                 path: 'suppliers',
-                name: 'Suppliers',
-                component: SupplierPage,
-                auth: true
+                children: [
+                    {
+                        path: '',
+                        name: 'Suppliers',
+                        component: SupplierPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'CreateSupplier',
+                        component: CreateSupplierPage,
+                        meta: { requiresAuth: true }
+                    }
+                ]
             },
             {
-                path: 'owner',
-                name: 'Owner',
-                component: OwnerPage,
-                auth: true
-            },
-            {
-                path: 'owner/create',
-                name: 'CreateOwner',
-                component: CreateOwner,
-                auth: true
+                path: 'owners',
+                children: [
+                    {
+                        path: '',
+                        name: 'Owners',
+                        component: OwnerPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'CreateOwner',
+                        component: CreateOwner,
+                        meta: { requiresAuth: true }
+                    }
+                ]
             },
             {
                 path: 'location',
