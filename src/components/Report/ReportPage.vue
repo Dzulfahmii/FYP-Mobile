@@ -1,8 +1,7 @@
 <template>
-    <k-page>
-        <k-navbar title="REPORT" />
+    <section>
         <k-block-title>Report Asset View</k-block-title>
-        <div class ="block overflow-x-auto mt-8">
+        <kCard class ="block overflow-x-auto mt-8">
             <k-table>
                 <k-table-head>
                     <k-table-row header>
@@ -23,8 +22,8 @@
                     </k-table-row>
                     </k-table-body>
             </k-table>
-        </div>
-    </k-page>
+        </kCard>
+      </section>
 </template>
 
 <script setup>
