@@ -5,7 +5,7 @@
     <k-list strong  inset>
       <k-list-item class="font-bold border-b" title="Asset Name" >
         <template #inner>
-            <p class="font-normal">Acer Nitro Ace</p>
+            <p class="font-normal">{{ asset?.name ?? 'Not Available' }}</p>
         </template>
       </k-list-item>
       <k-list-item class="font-bold border-b"    title="SKU:" >
@@ -15,10 +15,10 @@
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Owner: " >
         <template  #inner>
-            <p class="font-normal">Wishal Aqashah</p>
+            <p class="font-normal"  >{{ asset?.ownerId ?? "Not Available" }}</p>
         </template>
       </k-list-item>
-      <k-list-item  class="font-bold border-b"title="Acquisition Date: " >
+      <k-list-item  class="font-bold border-b" title="Acquisition Date: " >
         <template  #inner>
             <p class="font-normal">28-02-2023</p>
         </template>
@@ -72,19 +72,25 @@ import {
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
-const assets = ref([]);
+const asset = ref();
 const router = useRouter();
-function GetAsset(){
-  fetch('https://localhost:7043/Assets/GetAsset/'+router.currentRoute.value.params.id, {
+async function GetAsset(){
+  let res = await fetch('https://localhost:7043/Assets/GetAsset/'+router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => {
-    return response.json();
-  }).then(data => {
-    assets.value = data;
-  });
+  })
+  if(res.status === 200){
+    let data = await res.json();
+    asset.value = data;
+  }
+  else{
+
+    console.log('Error');
+    await router.push({name:'Assets'});
+  }
+
 }
 
 onMounted(() => {
