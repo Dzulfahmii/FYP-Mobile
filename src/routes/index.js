@@ -2,7 +2,6 @@ import LoginPage from "../components/Login/LoginPage.vue";
 import AppPage from "../components/AppPage.vue";
 import HelloWorld from "../components/Dashboard.vue";
 import CreateAssetPage from "../components/Assets/CreateAssetPage.vue";
-import AssetPage from "../components/Assets/AssetPage.vue";
 import OwnerPage from "../components/Owner/OwnerPage.vue";
 import LocationPage from "../components/Location/LocationPage.vue";
 import CategoryPage from "../components/Category/CategoryPage.vue";
@@ -15,6 +14,7 @@ import AssetsPage from "../components/Assets/AssetsPage.vue";
 import Asset from "../components/Assets/Asset.vue";
 import CreateCategoryPage from "../components/Category/CreateCategoryPage.vue";
 import CreateLocationPage from "../components/Location/CreateLocationPage.vue";
+import CreateReportPage from "../components/Report/CreateReportPage.vue";
 
 const routes =  [
     {
@@ -60,9 +60,28 @@ const routes =  [
 
             {
                 path: 'reports',
-                name: 'Reports',
-                component: ReportPage,
-                auth: true
+                children: [
+                    {
+                        path: '',
+                        name: 'Reports',
+                        component: ReportPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'CreateReport',
+                        component: CreateReportPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'Report',
+                        component: CreateReportPage,
+                        meta: { requiresAuth: true}
+                    }
+
+
+                ]
             },
             {
                 path: 'scanner',
