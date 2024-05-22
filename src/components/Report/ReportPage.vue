@@ -23,6 +23,7 @@
                     </k-table-body>
             </k-table>
         </kCard>
+    </section>
 </template>
 
 <script setup>
