@@ -74,8 +74,8 @@ import {useRouter} from "vue-router";
 
 const assets = ref([]);
 const router = useRouter();
-function GetAssets(){
-  fetch('https://localhost:7043/Assets/GetAssets', {
+function GetAsset(){
+  fetch('https://localhost:7043/Assets/GetAsset/'+router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ function GetAssets(){
 }
 
 onMounted(() => {
-  GetAssets();
+  GetAsset();
 });
 
 </script>

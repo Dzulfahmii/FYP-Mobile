@@ -56,7 +56,7 @@ const logout = () => {
             <k-list-item @click="()=>router.push({name:'Assets'})" link title="Assets" />
             <k-list-item @click="()=>router.push({name:'Owner'})" link title="Owner" />
             <k-list-item @click="()=>router.push({name:'categories'})" link title="Category" />
-
+            <k-list-item @click="()=>router.push({name:'Reports'})" link title="Reports" />
             <k-list-item @click="()=>router.push({name:'locations'})" link title="Location" />
             <k-list-item @click="logout" link title="Logout" >
               <template #after>
