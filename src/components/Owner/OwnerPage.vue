@@ -11,8 +11,11 @@
                     </k-table-row>
                 </k-table-head>
                 <k-table-body>
-                    <k-table-row>
-                        <k-table-cell>Dzulfahmi</k-table-cell>
+                    <k-table-row v-for="owner in owners" >
+                        <k-table-cell  @click="router.push({ name:'CreateOwner' ,params:{id:owner.id}})">
+                          Dzulfahmi
+
+                        </k-table-cell>
                         <k-table-cell class="text-right">0123456789</k-table-cell>
                     </k-table-row>
                     <k-table-row>
@@ -51,7 +54,7 @@ import {useRouter} from "vue-router";
 const owners = ref([]);
 const router = useRouter();
 function getOwners(){
-  fetch('https://localhost:7043/Assets/GetOwners', {
+  fetch('https://localhost:7043/Owner/GetOwners', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

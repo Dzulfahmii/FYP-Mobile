@@ -3,6 +3,7 @@ import {onMounted, ref} from 'vue';
 import {
   kBlockTitle,
   kList,
+<<<<<<< HEAD
   kListInput, kApp as KApp, kButton as KButton,
     kCard
 } from "konsta/vue";
@@ -68,6 +69,26 @@ onMounted(() => {
       </section>
     </k-list>
 
+=======
+  kListItem,
+  kApp as KApp, kButton as KButton,
+  kPage,
+  kNavbar
+
+
+} from "konsta/vue";
+</script>
+
+<template>
+  <section>
+    <k-block-title>Information</k-block-title>
+    <k-list strong  inset>
+      <k-list-item class="font-bold border-b" title="Asset Name" >
+        <template #inner>
+        </template>
+      </k-list-item>
+    </k-list>
+>>>>>>> 480dc9a6668c1bf651d26d0ef499295a3aeef6aa
   </section>
 </template>
 
