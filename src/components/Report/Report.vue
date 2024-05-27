@@ -10,8 +10,8 @@ import {useRouter} from "vue-router";
 
 const assets = ref([]);
 const router = useRouter();
-function getAssets(){
-  fetch('https://localhost:7043/Assets/GetAssets', {
+function getReports(){
+  fetch('https://localhost:7043/Report/GetReports', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -19,12 +19,12 @@ function getAssets(){
   }).then(response => {
     return response.json();
   }).then(data => {
-    assets.value = data;
+    reports.value = data;
   });
 }
 
 onMounted(() => {
-  getAssets();
+  getReports();
 });
 
 </script>
@@ -34,25 +34,25 @@ onMounted(() => {
 
     <k-block-title class="text-xl">
 
-      Assets
+      Reports
     </k-block-title>
     <k-list>
     <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
       <div>
-        <h1 class="text-2xl font-bold text-center" >{{ assets.length }}</h1>
-        <span>Total Assets</span>
+        <h1 class="text-2xl font-bold text-center" >{{ reports.length }}</h1>
+        <span>Total Reports</span>
     </div>
     </div>
       <div class="px-5">
         <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1" outline>Create Asset</k-button>
+        <k-button @click="()=>router.push({name:'CreateReports'})" class="flex-1" outline>Create Report</k-button>
       </div>
 
-      <section v-for="asset in assets">
+      <section v-for="report in reports">
         <k-card   class=" flex flex-col ">
           <section class="flex flex-col gap-1 p-1">
             <h1 class="font-bold text-lg">
-              {{ asset.assetName }}
+              {{ asset.SKU }}
             </h1>
             <p class="font-bold">
               Remarks:
@@ -60,10 +60,10 @@ onMounted(() => {
             <div class="flex gap-2 items-center w-full">
 
               <p class="font-bold">
-              Location: 
-              <span class="font-normal">{{ asset.locationId }}</span></p>
+              Issues: 
+              <span class="font-normal">{{ report.reportIssues }}</span></p>
             </div>
-            <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
+            <k-button class="w-full mx-auto" @click="router.push({name:'Report',params:{id:report.id}})" outline >View</k-button>
           </section>
 
         </k-card>

@@ -10,8 +10,8 @@ import {useRouter} from "vue-router";
 
 const assets = ref([]);
 const router = useRouter();
-function getAssets(){
-  fetch('https://localhost:7043/Assets/GetAssets', {
+function getOwners(){
+  fetch('https://localhost:7043/Assets/GetOwners', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -19,12 +19,12 @@ function getAssets(){
   }).then(response => {
     return response.json();
   }).then(data => {
-    assets.value = data;
+    owners.value = data;
   });
 }
 
 onMounted(() => {
-  getAssets();
+  getOwners();
 });
 
 </script>
@@ -34,36 +34,34 @@ onMounted(() => {
 
     <k-block-title class="text-xl">
 
-      Assets
+      Owners
     </k-block-title>
     <k-list>
     <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
       <div>
-        <h1 class="text-2xl font-bold text-center" >{{ assets.length }}</h1>
-        <span>Total Assets</span>
+        <h1 class="text-2xl font-bold text-center" >{{ owners.length }}</h1>
+        <span>Total Owners</span>
     </div>
     </div>
       <div class="px-5">
         <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1" outline>Create Asset</k-button>
+        <k-button @click="()=>router.push({name:'CreateOwners'})" class="flex-1" outline>Create Owners</k-button>
       </div>
 
-      <section v-for="asset in assets">
+      <section v-for="owner in owners">
         <k-card   class=" flex flex-col ">
           <section class="flex flex-col gap-1 p-1">
             <h1 class="font-bold text-lg">
-              {{ asset.assetName }}
+              {{ owner.ownerName }}
             </h1>
             <p class="font-bold">
               Remarks:
-              <span class="font-normal">{{ asset.sku }}</span></p>
-            <div class="flex gap-2 items-center w-full">
-
-              <p class="font-bold">
-              Location: 
-              <span class="font-normal">{{ asset.locationId }}</span></p>
-            </div>
-            <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
+              <span class="font-normal">
+                {{ owner.ownerTel_no }}
+              </span>
+            </p>
+            
+            <k-button class="w-full mx-auto" @click="router.push({name:'Owner',params:{id:owner.id}})" outline >View</k-button>
           </section>
 
         </k-card>

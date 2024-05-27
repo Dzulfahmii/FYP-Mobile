@@ -10,7 +10,7 @@
       </k-list-item>
       <k-list-item class="font-bold border-b"    title="SKU:" >
         <template  #inner>
-            <p class="font-normal"> R7437378</p>
+            <p class="font-normal"> {{  asset?.SKU ?? 'Not Available' }}</p>
         </template>
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Owner: " >
@@ -20,32 +20,32 @@
       </k-list-item>
       <k-list-item  class="font-bold border-b" title="Acquisition Date: " >
         <template  #inner>
-            <p class="font-normal">28-02-2023</p>
+            <p class="font-normal">{{ asset?.purchase_date ?? 'Not Available'}}</p>
         </template>
       </k-list-item>
         <k-list-item class="font-bold border-b" title="Serial Number: " >
             <template  #inner>
-                <p class="font-normal">LCF45332532</p>
+                <p class="font-normal">{{ asset?.serial_no ?? 'Not Available'}}</p>
             </template>
         </k-list-item>
         <k-list-item class="font-bold border-b" title="Physical Location: " >
             <template  #inner>
-                <p class="font-normal">Finance Room</p>
+                <p class="font-normal">{{ asset?.locationId ?? 'Not Available' }}</p>
             </template>
         </k-list-item>
-        <k-list-item class="font-bold border-b" title="Asser Type: " >
+        <k-list-item class="font-bold border-b" title="Asset Type: " >
             <template  #inner>
-                <p class="font-normal">Laptop</p>
+                <p class="font-normal"> {{ asset?.categoryId ?? 'Not Available' }} </p>
             </template>
         </k-list-item>
         <k-list-item class="font-bold border-b" title="Supply by: " >
             <template  #inner>
-                <p class="font-normal">Dell Sdn. Bhd.</p>
+                <p class="font-normal">{{ asset?.supplierId ?? 'Not Available' }}</p>
             </template>
         </k-list-item>
         <k-list-item  class="font-bold border-b"title="Price: " >
             <template  #inner>
-                <p class="font-normal">RM2500</p>
+                <p class="font-normal">{{ asset?.price ?? 'Not Available' }}</p>
             </template>
         </k-list-item>
         </k-list>   
