@@ -8,10 +8,10 @@ import {
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
-const assets = ref([]);
+const category = ref({});
 const router = useRouter();
 function getCategories(){
-  fetch('https://localhost:7043/Assets/GetCategories', {
+  fetch('https://localhost:7043/Assets/GetCategory/'+ router.currentRoute.value.params.id , {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ function getCategories(){
   }).then(response => {
     return response.json();
   }).then(data => {
-    categories.value = data;
+    category.value = data;
   });
 }
 
@@ -30,41 +30,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="px-2">
-
-    <k-block-title class="text-xl">
-
-      Catgories
-    </k-block-title>
-    <k-list>
-    <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
-      <div>
-        <h1 class="text-2xl font-bold text-center" >{{ categories.length }}</h1>
-        <span>Total Categories</span>
-    </div>
-    </div>
-      <div class="px-5">
-        <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateCategories'})" class="flex-1" outline>Create Asset</k-button>
-      </div>
-
-      <section v-for="asset in assets">
-        <k-card   class=" flex flex-col ">
-          <section class="flex flex-col gap-1 p-1">
-            <h1 class="font-bold text-lg">
-              {{ category.categoryName}}
-            </h1>
-            
-
-              
-            
-            <k-button class="w-full mx-auto" @click="router.push({name:'Category',params:{id:category.id}})" outline >View</k-button>
-          </section>
-
-        </k-card>
-      </section>
+  <section>
+    <k-block-title class="text-xl">Category Asset View</k-block-title>
+    <k-list >
+      <k-list-input :value="name" @input="e => {name = e.target.value;}" label="Asset Name" type="text" placeholder="Category Name">
+      </k-list-input>
+    <k-button @click="createCategory">Apply</k-button>
     </k-list>
-
   </section>
 </template>
 

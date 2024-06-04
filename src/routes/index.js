@@ -15,6 +15,7 @@ import Asset from "../components/Assets/Asset.vue";
 import CreateCategoryPage from "../components/Category/CreateCategoryPage.vue";
 import CreateLocationPage from "../components/Location/CreateLocationPage.vue";
 import CreateReportPage from "../components/Report/CreateReportPage.vue";
+import Category from "../components/Category/Category.vue";
 
 const routes =  [
     {
@@ -89,8 +90,6 @@ const routes =  [
                         component: CreateReportPage,
                         meta: { requiresAuth: true}
                     }
-
-
                 ]
             },
             {
@@ -129,6 +128,12 @@ const routes =  [
                         path: 'create',
                         name: 'createCategory',
                         component: CreateCategoryPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'category',
+                        component: Category,
                         meta: { requiresAuth: true }
                     }
                 ]

@@ -9,15 +9,8 @@
                     </k-table-row>
                 </k-table-head>
                 <k-table-body>
-                    <k-table-row>
-                        <k-table-cell>Laptop</k-table-cell>
-                       <k-table-cell><button class="rounded bg-lime-300 p-5" @click="console.log('TEST')">Edit</button></k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Printer</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Notebook</k-table-cell>
+                    <k-table-row v-for="category in categories" >
+                        <k-table-cell @click="router.push({ name:'category' ,params:{id:category.id}})">{{ category.name }}</k-table-cell>
                     </k-table-row>
                     </k-table-body>
             </k-table>
@@ -43,11 +36,12 @@ import {
 
 } from "konsta/vue";
 import {useRouter} from "vue-router";
+import category from "./Category.vue";
 
 const categories = ref([]);
 const router = useRouter();
 function getCategories(){
-  fetch('https://localhost:7043/Assets/GetCategories', {
+  fetch('https://localhost:7043/Category/GetCategories', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
