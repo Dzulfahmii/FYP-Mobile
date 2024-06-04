@@ -59,6 +59,12 @@ const routes =  [
                         name: 'CreateOwner',
                         component: CreateOwner,
                         meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'Owner',
+                        component: ()=> import('../components/Owner/Owner.vue'),
+                        meta: { requiresAuth: true }
                     }
                 ]
             },
@@ -112,6 +118,12 @@ const routes =  [
                         name: 'createLocation',
                         component: CreateLocationPage,
                         meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'location',
+                        component: ()=> import('../components/Location/Location.vue'),
+                        meta: { requiresAuth: true }
                     }
                 ]
             },
@@ -163,6 +175,29 @@ const routes =  [
                     // Other Asset Routes...
                 ]
             },
+            {
+                path: 'reports',
+                children: [
+                    {
+                        path: '',
+                        name: 'Reports',
+                        component: ReportPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: 'create',
+                        name: 'CreateReport',
+                        component: CreateReportPage,
+                        meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'Report',
+                        component: ()=> import('../components/Report/Report.vue'),
+                        meta: { requiresAuth: true}
+                    }
+                ]
+            }
 
 
             // {

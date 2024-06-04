@@ -8,10 +8,10 @@ import {
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
-const assets = ref([]);
+const report = ref([]);
 const router = useRouter();
 function getReports(){
-  fetch('https://localhost:7043/Report/GetReports', {
+  fetch('https://localhost:7043/Report/GetReports/' + router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ function getReports(){
   }).then(response => {
     return response.json();
   }).then(data => {
-    reports.value = data;
+    report.value = data;
   });
 }
 
@@ -30,46 +30,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="px-2">
-
-    <k-block-title class="text-xl">
-
-      Reports
-    </k-block-title>
-    <k-list>
-    <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
-      <div>
-        <h1 class="text-2xl font-bold text-center" >{{ reports.length }}</h1>
-        <span>Total Reports</span>
-    </div>
-    </div>
-      <div class="px-5">
-        <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateReports'})" class="flex-1" outline>Create Report</k-button>
+  <section>
+    <k-block-title class="text-xl">Report Asset View</k-block-title>
+    
+      <k-card class="my-15" >
+          <k-list>
+              <k-list-item class="font-bold border-b" title="Report Name: " >
+                  <template  #inner>
+                      <p class="font-normal">{{ report?.name ?? 'Not Available' }}</p>
+                  </template>
+              </k-list-item>
+          </k-list>
+      </k-card>
+      
+      <div class="px-5 ">
+        <k-list-input placeholder="Edit here" class="-mx-5"></k-list-input>
       </div>
+    
+    <section class="flex gap-2 mx-5 my-4"> 
+    <k-button class="px-5  " @click="createReport">Apply</k-button>
+    </section>
 
-      <section v-for="report in reports">
-        <k-card   class=" flex flex-col ">
-          <section class="flex flex-col gap-1 p-1">
-            <h1 class="font-bold text-lg">
-              {{ asset.SKU }}
-            </h1>
-            <p class="font-bold">
-              Remarks:
-              <span class="font-normal">{{ asset.sku }}</span></p>
-            <div class="flex gap-2 items-center w-full">
-
-              <p class="font-bold">
-              Issues: 
-              <span class="font-normal">{{ report.reportIssues }}</span></p>
-            </div>
-            <k-button class="w-full mx-auto" @click="router.push({name:'Report',params:{id:report.id}})" outline >View</k-button>
-          </section>
-
-        </k-card>
-      </section>
-    </k-list>
-
+  
   </section>
 </template>
 

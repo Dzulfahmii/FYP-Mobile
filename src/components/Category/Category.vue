@@ -32,11 +32,25 @@ onMounted(() => {
 <template>
   <section>
     <k-block-title class="text-xl">Category Asset View</k-block-title>
-    <k-list >
-      <k-list-input :value="name" @input="e => {name = e.target.value;}" label="Asset Name" type="text" placeholder="Category Name">
-      </k-list-input>
-    <k-button @click="createCategory">Apply</k-button>
-    </k-list>
+    
+      <k-card class="my-15" >
+          <k-list>
+              <k-list-item class="font-bold border-b" title="Category Name: " >
+                  <template  #inner>
+                      <p class="font-normal">{{ category?.name ?? 'Not Available' }}</p>
+                  </template>
+              </k-list-item>
+          </k-list>
+      </k-card>
+      
+      <div class="px-5 ">
+        <k-list-input placeholder="Edit here" class="-mx-5"></k-list-input>
+      </div>
+    
+      <section class="flex gap-2 mx-5 my-4">
+      <k-button class="px-5  " @click="createCategory">Apply</k-button>
+      </section>
+      
   </section>
 </template>
 
