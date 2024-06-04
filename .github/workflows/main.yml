@@ -1,1 +1,42 @@
+# This workflow will build a Vue JS website and deploy it to a remote server
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build and Deploy
+
+env:
+  SSH_HOST : 128.199.68.189
+  SSH_USER : root
+  SSH_PASSWORD : 45G98p7gGxEr6Rz
+  SSH_PORT : 22
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install bun
+        run: sudo apt-get install bun
+      - name: Install Dependencies
+        run: bun install
+      - name: Build
+        run: bun build
+      - name: Deploy
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ env.SSH_HOST }}
+          username: ${{ env.SSH_USER }}
+          password: ${{ env.SSH_PASSWORD }}
+          port: ${{ env.SSH_PORT }}
+          source: "dist/"
+          target: "/var/www/html/"
+
+
+
 
