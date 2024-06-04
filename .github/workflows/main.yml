@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install bun
-        run: sudo apt-get install bun
+        uses: oven-sh/setup-bun@v1
       - name: Install Dependencies
         run: bun install
       - name: Build
