@@ -1,9 +1,112 @@
 <script setup>
+import {onMounted, ref} from 'vue';
+import {
 
+  kBlockTitle,
+  kList,
+  kListInput, kApp as KApp, kButton as KButton, kBlock as KBlock,
+} from "konsta/vue";
+import {useRouter} from "vue-router";
 </script>
 
 <template>
+  <section>
+    <k-block-title class="text-xl">Assets</k-block-title>
+    <k-list class="strong-ios ">
+      <k-list-input :value="name" @input="e => {
+      name = e.target.value;
+    }" label="Asset Name" type="text" placeholder="Your asset name">
+      </k-list-input>
 
+      <k-list-input
+          :value="sku"
+          @input="e => {
+          sku = e.target.value;
+        }"
+          label="SKU" type="SKU" placeholder="SKU">
+      </k-list-input>
+
+      <k-list-input
+          :value="owner"
+          @input="e => {
+            owner = e.target.value;
+          }"
+          label="Owner"
+          type="select"
+          dropdown
+          default-value="Male"
+          placeholder="Please choose..."
+
+      >
+        <option v-for="owner in owners" :key="owner.id" :value="owner.id">{{owner.name}}</option>
+      </k-list-input>
+
+      <k-list-input
+          :value="acquisitionDate"
+          @input="e => {
+        acquisitionDate = e.target.value;
+      }"
+          label="Acquisation Date" type="date" placeholder="Acquisation date of Asset">
+      </k-list-input>
+
+      <k-list-input
+          :value="serialNumber"
+          @input="e => {
+        serialNumber = e.target.value;
+      }"
+          label="Serial Number" type="Serial Number" placeholder="Serial Number of Asset">
+      </k-list-input>
+
+      <k-list-input
+          dropdown
+
+          :value="location"
+          @input="e =>
+      {
+        location = e.target.value;
+      }"
+          label="Physical Location" type="select" placeholder="Location of Asset"
+      >
+        <option selected="selected" disabled>Please Select</option>
+        <option v-for="location in locations" :key="location.id" :value="location.id">{{location.locationName}}</option>
+      </k-list-input>
+
+      <k-list-input
+          :value="category"
+          @input="e => {
+        category = e.target.value;
+      }"
+          label="Asset Type" type="select" placeholder="Type of Asset">
+        <option v-for="category in categories" :key="category.id" :value="category.id">{{category.name}}</option>
+      </k-list-input>
+
+      <k-list-input label="Supply By"
+                    type="select"
+                    dropdown
+                    default-value=""
+                    placeholder="Please choose..."
+                    :value="supplier"
+                    @input="e => {
+                    supplier = e.target.value;
+                  }"
+      >
+        <option v-for="supplier in suppliers" :key="supplier.id" :value="supplier.id">{{supplier.name}}</option>
+      </k-list-input>
+
+      <k-list-input
+          :value="price"
+          @input="e => {
+        price = e.target.value;
+      }"
+          label="Price" type="number" placeholder="Price">
+      </k-list-input>
+      <section class="flex gap-2 mx-5 my-4">
+        <KButton>Cancel</KButton>
+        <KButton @click="createAsset">Apply</KButton>
+      </section>
+    </k-list>
+
+  </section>
 </template>
 
 <style scoped>

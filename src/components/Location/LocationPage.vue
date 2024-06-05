@@ -9,15 +9,9 @@
                     </k-table-row>
                 </k-table-head>
                 <k-table-body>
-                    <k-table-row>
-                        <k-table-cell>Finance</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>IT</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>HR</k-table-cell>
-                    </k-table-row>
+                  <k-table-row v-for="location in locations" :key="location.id">
+                    <k-table-cell @click="router.push({ name:'location' ,params:{id:location.id}})" >{{ location.locationName }}</k-table-cell>
+                  </k-table-row>
                     </k-table-body>
             </k-table>
         </kCard>
@@ -46,7 +40,7 @@ import {useRouter} from "vue-router";
 const locations = ref([]);
 const router = useRouter();
 function getLocations(){
-  fetch('https://localhost:7043/Assets/GetLocations', {
+  fetch('https://localhost:7043/Location/GetLocations', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
