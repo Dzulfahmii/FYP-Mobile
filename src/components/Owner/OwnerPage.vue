@@ -12,11 +12,10 @@
                 </k-table-head>
                 <k-table-body>
                     <k-table-row v-for="owner in owners" >
-                        <k-table-cell  @click="router.push({ name:'CreateOwner' ,params:{id:owner.id}})">
-                          Dzulfahmi
-
+                        <k-table-cell  @click="router.push({ name:'Owner' ,params:{id:owner.id}})">
+                          {{ owner.name }}
                         </k-table-cell>
-                        <k-table-cell class="text-right">0123456789</k-table-cell>
+                        <k-table-cell class="text-right">{{ owner.telNo }}</k-table-cell>
                     </k-table-row>
                     <k-table-row>
                         <k-table-cell>Izwan</k-table-cell>

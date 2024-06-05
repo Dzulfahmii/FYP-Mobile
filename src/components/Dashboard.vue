@@ -23,12 +23,7 @@ async function goToSupplier() {
   <div>
 
     <section class=" my-10 md:lg:grid md:lg:grid-cols-2  place-items-stretch gap-1 ">
-      <k-card     header="Inventory | ">
-        <template #header>
-          <k-link>View</k-link>
-        </template>
-        An overview of inventory items
-      </k-card>
+
       <k-card    header="Asset | " footer-divider >
         <template #header>
           <k-link class="" @click="async ()=> await router.push({name:'Assets'})" >View</k-link>
@@ -37,22 +32,17 @@ async function goToSupplier() {
       </k-card >
       <k-card   header="Request | ">
         <template #header>
-          <k-link @click="async ()=> await router.push({name:'Report'})">View</k-link>
+          <k-link @click="async ()=> await router.push({name:'Reports'})">View</k-link>
         </template>
         Submit and track asset requests
       </k-card>
       <k-card  header="Suppliers | ">
         <template #header>
-          <k-link>View</k-link>
+          <k-link @click="goToSupplier" >View</k-link>
         </template>
         Manage suppliers and vendor information
       </k-card>
-      <k-card  header="Maintenance | ">
-        <template #header>
-          <k-link @click="goToSupplier" >View</k-link>
-        </template>
-        Schedule and track maintenance tasks
-      </k-card>
+
       <k-card    header="Settings | ">
         <template #header>
           <k-link>View</k-link>
