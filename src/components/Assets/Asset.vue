@@ -1,17 +1,21 @@
 
 <template>
     <section>
-        <k-block-title>Information</k-block-title>
-      <k-button @click="()=>router.push({name:'EditAsset', params:{id:asset.id}})" class="flex-1" outline>Edit</k-button>
+        <k-block-title class= "mx-2 text-xl">Asset Information</k-block-title>
+
     <k-list strong  inset>
+      <div class="my-5 mx-5">
+        <k-button @click="()=>router.push({name:'EditAsset', params:{id:asset.id}})" class="" outline>Edit</k-button>
+
+      </div>
       <k-list-item class="font-bold border-b" title="Asset Name" >
         <template #inner>
-            <p class="font-normal">{{ asset?.name ?? 'Not Available' }}</p>
+            <p class="font-normal">{{ asset?.assetName ?? 'Not Available' }}</p>
         </template>
       </k-list-item>
       <k-list-item class="font-bold border-b"    title="SKU:" >
         <template  #inner>
-            <p class="font-normal"> {{  asset?.SKU ?? 'Not Available' }}</p>
+            <p class="font-normal"> {{  asset?.sku ?? 'Not Available' }}</p>
         </template>
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Owner: " >
@@ -21,12 +25,12 @@
       </k-list-item>
       <k-list-item  class="font-bold border-b" title="Acquisition Date: " >
         <template  #inner>
-            <p class="font-normal">{{ asset?.purchase_date ?? 'Not Available'}}</p>
+            <p class="font-normal">{{ asset?.purchaseDate ?? 'Not Available'}}</p>
         </template>
       </k-list-item>
         <k-list-item class="font-bold border-b" title="Serial Number: " >
             <template  #inner>
-                <p class="font-normal">{{ asset?.serial_no ?? 'Not Available'}}</p>
+                <p class="font-normal">{{ asset?.serialNo ?? 'Not Available'}}</p>
             </template>
         </k-list-item>
         <k-list-item class="font-bold border-b" title="Physical Location: " >

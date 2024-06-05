@@ -7,6 +7,42 @@ import {
   kListInput, kApp as KApp, kButton as KButton, kBlock as KBlock, kListItem as KListItem,
 } from "konsta/vue";
 import {useRouter} from "vue-router";
+
+onMounted(() => {
+  getAsset();
+});
+
+const asset = ref();
+const router = useRouter();
+const getAsset = () => {
+  fetch('https://localhost:7043/Assets/GetAsset/' + router.currentRoute.value.params.id, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    asset.value = data;
+  });
+}
+
+const editAsset = () => {
+  fetch('https://localhost:7043/Assets/UpdateAsset/', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(asset.value)
+  }).then(response => {
+    alert('Asset updated successfully');
+    return response.json();
+  }).then(data => {
+    asset.value = data;
+  });
+}
+
+
 </script>
 
 <template>
@@ -15,20 +51,20 @@ import {useRouter} from "vue-router";
     <k-list strong  inset>
       <k-list-item class="font-bold border-b" title="Asset Name" >
         <template #inner>
-          <p class="font-normal">{{ asset?.name ?? 'Not Available' }}</p>
+          <p class="font-normal">{{ asset?.assetName ?? 'Not Available' }}</p>
         </template>
         <div class="px-5 "> 
-        <k-list-input :value="asset?.name"
-                            @input="asset.name = $event.target.value"
+        <k-list-input :value="asset?.assetName"
+                            @input="asset.assetName = $event.target.value"
                             placeholder="Edit here" class="-mx-5"> </k-list-input> </div>
       </k-list-item>
       <k-list-item class="font-bold border-b"    title="SKU:" >
         <template  #inner>
-          <p class="font-normal"> {{  asset?.SKU ?? 'Not Available' }}</p>
+          <p class="font-normal"> {{  asset?.sku ?? 'Not Available' }}</p>
         </template>
         <div class="px-5 ">
-        <k-list-input :value="asset?.SKU"
-                      @input="asset.SKU = $event.target.value"
+        <k-list-input :value="asset?.sku"
+                      @input="asset.sku = $event.target.value"
                       placeholder="Edit here" class="-mx-5"></k-list-input> </div>
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Owner: " >
@@ -42,20 +78,20 @@ import {useRouter} from "vue-router";
       </k-list-item>
       <k-list-item  class="font-bold border-b" title="Acquisition Date: " >
         <template  #inner>
-          <p class="font-normal">{{ asset?.purchase_date ?? 'Not Available'}}</p>
+          <p class="font-normal">{{ asset?.purchaseDate ?? 'Not Available'}}</p>
         </template>
         <div class="px-5 ">
-        <k-list-input :value="asset?.purchase_date"
-                      @input="asset.purchase_date = $event.target.value"
+        <k-list-input :value="asset?.purchaseDate"
+                      @input="asset.purchaseDate = $event.target.value"
                       placeholder="Edit here" class="-mx-5"></k-list-input> </div>
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Serial Number: " >
         <template  #inner>
-          <p class="font-normal">{{ asset?.serial_no ?? 'Not Available'}}</p>
+          <p class="font-normal">{{ asset?.serialNo ?? 'Not Available'}}</p>
         </template>
         <div class="px-5 ">
-        <k-list-input :value="asset?.serial_no"
-                      @input="asset.serial_no = $event.target.value"
+        <k-list-input :value="asset?.serialNo"
+                      @input="asset.serialNo = $event.target.value"
                       placeholder="Edit here" class="-mx-5"></k-list-input> </div>
       </k-list-item>
       <k-list-item class="font-bold border-b" title="Physical Location: " >

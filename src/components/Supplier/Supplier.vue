@@ -8,7 +8,7 @@ import {
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
-const supplier = ref([]);
+const supplier = ref({});
 const router = useRouter();
 function GetSuppliers(){
   fetch('https://localhost:7043/Supplier/GetSupplier/' + router.currentRoute.value.params.id, {
@@ -39,7 +39,7 @@ const editSupplier = () => {
 }
 
 onMounted(() => {
-  getSuppliers();
+  GetSuppliers();
 });
 
 </script>
