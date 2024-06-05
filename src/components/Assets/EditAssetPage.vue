@@ -93,6 +93,10 @@ import {useRouter} from "vue-router";
         <k-list-input :value="asset?.price"
                       @input="asset.price = $event.target.value"
                       placeholder="Edit here" class="-mx-5"></k-list-input> </div>
+
+                      <div class="flex gap-2 mx-5 my-4">
+              <k-button class="px-5  " @click="editAsset">Save</k-button>
+            </div>
       </k-list-item>
     </k-list>
   </section>
