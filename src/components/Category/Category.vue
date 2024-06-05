@@ -4,14 +4,14 @@ import {
   kBlockTitle,
   kList,
   kListInput, kApp as KApp, kButton as KButton,
-    kCard
+  kCard, kListItem as KListItem
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
 const category = ref({});
 const router = useRouter();
 function getCategories(){
-  fetch('https://localhost:7043/Assets/GetCategory/'+ router.currentRoute.value.params.id , {
+  fetch('https://localhost:7043/Category/GetCategory/'+ router.currentRoute.value.params.id , {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -21,6 +21,25 @@ function getCategories(){
   }).then(data => {
     category.value = data;
   });
+}
+
+const editCategory = async () =>{
+  let res = await fetch('https://localhost:7043/Category/UpdateCategory/' , {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(category.value)
+  })
+  if(res.status === 200 || res.status === 204){
+    alert('Category Updated Successfully');
+    category.value =  await res.json();
+  }
+  else{
+    alert('Category Update Failed' + res.stat);
+  }
+
+
 }
 
 onMounted(() => {
@@ -40,16 +59,20 @@ onMounted(() => {
                       <p class="font-normal">{{ category?.name ?? 'Not Available' }}</p>
                   </template>
               </k-list-item>
+            <div class="px-5 ">
+              <k-list-input :value="category?.name"
+                            @input="category.name = $event.target.value"
+                            placeholder="Edit here" class="-mx-5"></k-list-input>
+            </div>
+            <div class="flex gap-2 mx-5 my-4">
+              <k-button class="px-5  " @click="editCategory">Apply</k-button>
+            </div>
           </k-list>
       </k-card>
       
-      <div class="px-5 ">
-        <k-list-input placeholder="Edit here" class="-mx-5"></k-list-input>
-      </div>
+
     
-      <section class="flex gap-2 mx-5 my-4">
-      <k-button class="px-5  " @click="createCategory">Apply</k-button>
-      </section>
+
       
   </section>
 </template>
