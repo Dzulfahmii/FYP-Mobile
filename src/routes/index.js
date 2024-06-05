@@ -43,6 +43,12 @@ const routes =  [
                         name: 'CreateSupplier',
                         component: CreateSupplierPage,
                         meta: { requiresAuth: true }
+                    },
+                    {
+                        path: ':id',
+                        name: 'Supplier',
+                        component: ()=> import('../components/Supplier/Supplier.vue'),
+                        meta: { requiresAuth: true }
                     }
                 ]
             },

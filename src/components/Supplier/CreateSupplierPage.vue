@@ -12,7 +12,7 @@
 
     <section class="flex gap-2 mx-5 my-4">
       <KButton>Cancel</KButton>
-      <KButton @click="createOwner" >Apply</KButton>
+      <KButton @click="createSupplier" >Apply</KButton>
     </section>
   </k-list>
   </section>
@@ -30,4 +30,20 @@
     import {useRouter} from "vue-router";
     const isLoading = ref(false);
     const router = useRouter()
+    const name = ref('');
+    const telephoneNumber = ref('');
+    function createSupplier(){
+      fetch('https://localhost:7043/Supplier/CreateSupplier', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name.value,
+          telNo: telephoneNumber.value
+        })
+      }).then(response => {
+        console.log(response);
+      });
+    }
     </script>

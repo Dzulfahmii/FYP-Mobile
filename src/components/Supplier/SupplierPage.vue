@@ -11,17 +11,10 @@
                     </k-table-row>
                 </k-table-head>
                 <k-table-body>
-                    <k-table-row>
-                        <k-table-cell>Intel</k-table-cell>
-                        <k-table-cell class="text-right">0123456789</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Acer</k-table-cell>
-                        <k-table-cell class="text-right">0193885756</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Dell</k-table-cell>
-                        <k-table-cell class="text-right">0183495865</k-table-cell>
+                    <k-table-row v-for="supplier in suppliers">
+                        <k-table-cell @click="router.push({ name:'Supplier' ,params:{id:supplier.id}})">
+                          {{supplier.name}}</k-table-cell>
+                        <k-table-cell class="text-right">{{supplier.telNo}}</k-table-cell>
                     </k-table-row>
                     </k-table-body>
             </k-table>
@@ -51,7 +44,7 @@ import {useRouter} from "vue-router";
 const suppliers = ref([]);
 const router = useRouter();
 function GetSuppliers(){
-  fetch('https://localhost:7043/Assets/GetSuppliers', {
+  fetch('https://localhost:7043/Supplier/GetSuppliers', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
