@@ -2,6 +2,7 @@
 <template>
     <section>
         <k-block-title>Information</k-block-title>
+      <k-button @click="()=>router.push({name:'EditAsset', params:{id:asset.id}})" class="flex-1" outline>Edit</k-button>
     <k-list strong  inset>
       <k-list-item class="font-bold border-b" title="Asset Name" >
         <template #inner>

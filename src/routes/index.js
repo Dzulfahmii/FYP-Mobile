@@ -16,6 +16,7 @@ import CreateCategoryPage from "../components/Category/CreateCategoryPage.vue";
 import CreateLocationPage from "../components/Location/CreateLocationPage.vue";
 import CreateReportPage from "../components/Report/CreateReportPage.vue";
 import Category from "../components/Category/Category.vue";
+import EditAssetPage from "../components/Assets/EditAssetPage.vue";
 
 const routes =  [
     {
@@ -172,6 +173,12 @@ const routes =  [
                         component: Asset,
                         meta: { requiresAuth: true }
                     },
+                    {
+                        path: ':id/edit',
+                        name: 'EditAsset',
+                        component: EditAssetPage,
+                        meta: { requiresAuth: true }
+                    }
                     // Other Asset Routes...
                 ]
             },
