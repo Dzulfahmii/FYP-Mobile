@@ -17,14 +17,6 @@
                         </k-table-cell>
                         <k-table-cell class="text-right">{{ owner.telNo }}</k-table-cell>
                     </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Izwan</k-table-cell>
-                        <k-table-cell class="text-right">0193885756</k-table-cell>
-                    </k-table-row>
-                    <k-table-row>
-                        <k-table-cell>Ismail</k-table-cell>
-                        <k-table-cell class="text-right">0183495865</k-table-cell>
-                    </k-table-row>
                     </k-table-body>
             </k-table>
         </k-card>
