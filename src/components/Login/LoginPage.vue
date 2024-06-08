@@ -9,7 +9,7 @@ import {
   kListInput, kApp as KApp, kButton as KButton,
 } from "konsta/vue";
 import {useRouter} from "vue-router";
-import {useLoginService} from "./LoginService.js";
+import {useLoginService} from "./LoginService";
 const isLoading = ref(false);
 const router = useRouter()
 const username = ref('');
