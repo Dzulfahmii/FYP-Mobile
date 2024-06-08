@@ -17,6 +17,7 @@ import CreateLocationPage from "../components/Location/CreateLocationPage.vue";
 import CreateReportPage from "../components/Report/CreateReportPage.vue";
 import Category from "../components/Category/Category.vue";
 import EditAssetPage from "../components/Assets/EditAssetPage.vue";
+import QRGeneratorPage from "../components/QRGeneratorPage.vue";
 
 const routes =  [
     {
@@ -210,6 +211,12 @@ const routes =  [
                         meta: { requiresAuth: true}
                     }
                 ]
+            },
+            {
+                path: 'qr',
+                name: 'Qr',
+                component: QRGeneratorPage,
+                auth: true
             }
 
 
