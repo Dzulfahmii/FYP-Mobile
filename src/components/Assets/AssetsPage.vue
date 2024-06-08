@@ -10,30 +10,32 @@ import {useRouter} from "vue-router";
 
 const assets = ref([]);
 const router = useRouter();
-function getAssets(){
-  fetch('http://api-asset.zapzyntax.online/Assets/GetAssets', {
+async function getAssets(){
+  let res = await fetch('http://api-asset.zapzyntax.online/Assets/GetAssets', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => {
-    return response.json();
-  }).then(data => {
-    assets.value = data;
-  });
+  })
+  if(res.ok){
+    assets.value = await res.json();
+  }
 }
 
-function deleteAsset(id){
-  fetch('http://api-asset.zapzyntax.online/Assets/DeleteAsset/' + id, {
+async function deleteAsset(asset){
+  let res = await fetch('http://api-asset.zapzyntax.online/Assets/DeleteAsset/' + asset.id, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => {
-    return response.json();
-  }).then(data => {
-    getAssets();
-  });
+  })
+
+if(res.ok){
+    alert('Asset Deleted')
+    assets.value = assets.value.filter(a => a.id !== asset.id);
+    await getAssets();
+  }
+
 }
 
 onMounted(() => {
@@ -77,7 +79,7 @@ onMounted(() => {
               <span class="font-normal">{{ asset.locationId }}</span></p>
             </div>
             <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
-            <k-button class="w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset.id)" outline >Delete</k-button>
+            <k-button class="w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset)" outline >Delete</k-button>
           </section>
 
         </k-card>

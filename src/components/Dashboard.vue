@@ -30,25 +30,12 @@ async function goToSupplier() {
         </template>
         An overview of assets
       </k-card >
-      <k-card   header="Request | ">
-        <template #header>
-          <k-link @click="async ()=> await router.push({name:'Reports'})">View</k-link>
-        </template>
-        Submit and track asset requests
-      </k-card>
       <k-card  header="Suppliers | ">
         <template #header>
           <k-link @click="goToSupplier" >View</k-link>
         </template>
         Manage suppliers and vendor information
       </k-card>
-
-<!--      <k-card    header="Settings | ">-->
-<!--        <template #header>-->
-<!--          <k-link>View</k-link>-->
-<!--        </template>-->
-<!--        Configure application settings-->
-<!--      </k-card>-->
       <k-card v-if="Capacitor.isNativePlatform()" header="Asset Scan | ">
         <template #header>
           <k-link @click=" async () => {
@@ -75,7 +62,7 @@ async function goToSupplier() {
         </template>
         Manage asset locations
       </k-card>
-      <k-card  header="QR Generator | ">
+      <k-card v-if="()=> !Capacitor.isNativePlatform() "  header="QR Generator | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'Qr'})">View</k-link>
         </template>
