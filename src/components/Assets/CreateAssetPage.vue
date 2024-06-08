@@ -199,7 +199,9 @@ function getCategories() {
       price: price.value
     })
   }).then(response => {
+    alert('Asset created successfully');
     console.log(response);
+
   });
 }
 
