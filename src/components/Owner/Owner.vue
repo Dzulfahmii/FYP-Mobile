@@ -11,7 +11,7 @@ import {useRouter} from "vue-router";
 const owner = ref({});
 const router = useRouter();
 function getOwners(){
-  fetch('https://localhost:7043/Owner/GetOwner/'+ router.currentRoute.value.params.id, {
+  fetch('http://api-asset.zapzyntax.online/Owner/GetOwner/'+ router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function getOwners(){
 }
 
 const editOwner = () => {
-  fetch('https://localhost:7043/Owner/UpdateOwner/', {
+  fetch('http://api-asset.zapzyntax.online/Owner/UpdateOwner/', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

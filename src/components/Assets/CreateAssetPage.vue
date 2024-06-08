@@ -130,7 +130,7 @@ const price = ref(0);
 
 
 function getOwners(){
-  fetch('https://localhost:7043/Owner/GetOwners', {
+  fetch('http://api-asset.zapzyntax.online/Owner/GetOwners', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -143,7 +143,7 @@ function getOwners(){
 }
 
 function getSuppliers(){
-  fetch('https://localhost:7043/Supplier/GetSuppliers', {
+  fetch('http://api-asset.zapzyntax.online/Supplier/GetSuppliers', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ function getSuppliers(){
 }
 
 function getLocations(){
-  fetch('https://localhost:7043/Location/GetLocations', {
+  fetch('http://api-asset.zapzyntax.online/Location/GetLocations', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ function getLocations(){
 }
 
 function getCategories() {
-  fetch('https://localhost:7043/Category/GetCategories', {
+  fetch('http://api-asset.zapzyntax.online/Category/GetCategories', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -182,7 +182,7 @@ function getCategories() {
 }
 
   function createAsset() {
-  fetch('https://localhost:7043/Assets/CreateAsset', {
+  fetch('http://api-asset.zapzyntax.online/Assets/CreateAsset', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

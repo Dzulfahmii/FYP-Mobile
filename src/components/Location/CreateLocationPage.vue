@@ -30,7 +30,7 @@
     const router = useRouter()
     const locationName = ref('');
     function createLocation(){
-      fetch('https://localhost:7043/Location/CreateLocation', {
+      fetch('http://api-asset.zapzyntax.online/Location/CreateLocation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -11,7 +11,7 @@ import {useRouter} from "vue-router";
 const supplier = ref({});
 const router = useRouter();
 function GetSuppliers(){
-  fetch('https://localhost:7043/Supplier/GetSupplier/' + router.currentRoute.value.params.id, {
+  fetch('http://api-asset.zapzyntax.online/Supplier/GetSupplier/' + router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function GetSuppliers(){
 }
 
 const editSupplier = () => {
-  fetch('https://localhost:7043/Supplier/UpdateSupplier/', {
+  fetch('http://api-asset.zapzyntax.online/Supplier/UpdateSupplier/', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

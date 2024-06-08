@@ -80,7 +80,7 @@ import {useRouter} from "vue-router";
 const asset = ref();
 const router = useRouter();
 async function GetAsset(){
-  let res = await fetch('https://localhost:7043/Assets/GetAsset/'+router.currentRoute.value.params.id, {
+  let res = await fetch('http://api-asset.zapzyntax.online/Assets/GetAsset/'+router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

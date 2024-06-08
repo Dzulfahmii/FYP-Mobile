@@ -1,5 +1,5 @@
 // //
-// let response = await fetch('https://localhost:7043/Account/Login', {
+// let response = await fetch('http://api-asset.zapzyntax.online/Account/Login', {
 //     method: 'POST',
 //     headers: {
 //         'Content-Type': 'application/json',
@@ -20,7 +20,7 @@
  class LoginService {
     public static async login(username: string, password: string): Promise<string> {
 
-        let response = await fetch('https://localhost:7043/Account/Login', {
+        let response = await fetch('http://api-asset.zapzyntax.online/Account/Login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

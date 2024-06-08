@@ -11,7 +11,7 @@ import {useRouter} from "vue-router";
 const category = ref({});
 const router = useRouter();
 function getCategories(){
-  fetch('https://localhost:7043/Category/GetCategory/'+ router.currentRoute.value.params.id , {
+  fetch('http://api-asset.zapzyntax.online/Category/GetCategory/'+ router.currentRoute.value.params.id , {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function getCategories(){
 }
 
 const editCategory = async () =>{
-  let res = await fetch('https://localhost:7043/Category/UpdateCategory/' , {
+  let res = await fetch('http://api-asset.zapzyntax.online/Category/UpdateCategory/' , {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

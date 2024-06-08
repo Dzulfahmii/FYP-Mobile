@@ -11,7 +11,7 @@
     const name = ref('');
     const telephoneNumber = ref('');
     function createOwner(){
-      fetch('https://localhost:7043/Owner/CreateOwner', {
+      fetch('http://api-asset.zapzyntax.online/Owner/CreateOwner', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -25,7 +25,7 @@
     const router = useRouter()
     const categoryName = ref('');
     function createCategory(){
-      fetch('https://localhost:7043/Category/CreateCategory', {
+      fetch('http://api-asset.zapzyntax.online/Category/CreateCategory', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

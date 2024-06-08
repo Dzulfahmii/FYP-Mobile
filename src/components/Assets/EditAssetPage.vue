@@ -15,7 +15,7 @@ onMounted(() => {
 const asset = ref();
 const router = useRouter();
 const getAsset = () => {
-  fetch('https://localhost:7043/Assets/GetAsset/' + router.currentRoute.value.params.id, {
+  fetch('http://api-asset.zapzyntax.online/Assets/GetAsset/' + router.currentRoute.value.params.id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const getAsset = () => {
 }
 
 const editAsset = () => {
-  fetch('https://localhost:7043/Assets/UpdateAsset/', {
+  fetch('http://api-asset.zapzyntax.online/Assets/UpdateAsset/', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

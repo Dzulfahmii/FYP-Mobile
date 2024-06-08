@@ -40,7 +40,7 @@ import {useRouter} from "vue-router";
 const locations = ref([]);
 const router = useRouter();
 function getLocations(){
-  fetch('https://localhost:7043/Location/GetLocations', {
+  fetch('http://api-asset.zapzyntax.online/Location/GetLocations', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

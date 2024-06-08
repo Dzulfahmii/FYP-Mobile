@@ -48,7 +48,7 @@ import {useRouter} from "vue-router";
 const reports = ref([]);
 const router = useRouter();
 function getReports(){
-  fetch('https://localhost:7043/Report/GetReports', {
+  fetch('http://api-asset.zapzyntax.online/Report/GetReports', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

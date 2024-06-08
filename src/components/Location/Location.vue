@@ -11,7 +11,7 @@ import {useRouter} from "vue-router";
 const location = ref([]);
 const router = useRouter();
 function getLocations(){
-  fetch('https://localhost:7043/Location/GetLocation/' + router.currentRoute.value.params.id ,{
+  fetch('http://api-asset.zapzyntax.online/Location/GetLocation/' + router.currentRoute.value.params.id ,{
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function getLocations(){
 }
 
 const editLocation = async () =>{
-  let res = await fetch('https://localhost:7043/Location/UpdateLocation/' , {
+  let res = await fetch('http://api-asset.zapzyntax.online/Location/UpdateLocation/' , {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

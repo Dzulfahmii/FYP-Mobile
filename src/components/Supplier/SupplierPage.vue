@@ -44,7 +44,7 @@ import {useRouter} from "vue-router";
 const suppliers = ref([]);
 const router = useRouter();
 function GetSuppliers(){
-  fetch('https://localhost:7043/Supplier/GetSuppliers', {
+  fetch('http://api-asset.zapzyntax.online/Supplier/GetSuppliers', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

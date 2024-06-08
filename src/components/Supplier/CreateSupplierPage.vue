@@ -33,7 +33,7 @@
     const name = ref('');
     const telephoneNumber = ref('');
     function createSupplier(){
-      fetch('https://localhost:7043/Supplier/CreateSupplier', {
+      fetch('http://api-asset.zapzyntax.online/Supplier/CreateSupplier', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

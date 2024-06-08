@@ -11,7 +11,7 @@ import {useRouter} from "vue-router";
 const assets = ref([]);
 const router = useRouter();
 function getAssets(){
-  fetch('https://localhost:7043/Assets/GetAssets', {
+  fetch('http://api-asset.zapzyntax.online/Assets/GetAssets', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

@@ -4,6 +4,7 @@ import {
   kButton as KButton, kList as KList,
   kListInput as KListInput
 } from "konsta/vue";
+
 </script>
 
 <template>

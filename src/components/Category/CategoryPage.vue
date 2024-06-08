@@ -41,7 +41,7 @@ import category from "./Category.vue";
 const categories = ref([]);
 const router = useRouter();
 function getCategories(){
-  fetch('https://localhost:7043/Category/GetCategories', {
+  fetch('http://api-asset.zapzyntax.online/Category/GetCategories', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

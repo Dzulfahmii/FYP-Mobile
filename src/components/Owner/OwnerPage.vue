@@ -45,7 +45,7 @@ import {useRouter} from "vue-router";
 const owners = ref([]);
 const router = useRouter();
 function getOwners(){
-  fetch('https://localhost:7043/Owner/GetOwners', {
+  fetch('http://api-asset.zapzyntax.online/Owner/GetOwners', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
