@@ -23,6 +23,19 @@ function getAssets(){
   });
 }
 
+function deleteAsset(id){
+  fetch('http://api-asset.zapzyntax.online/Assets/DeleteAsset/' + id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    getAssets();
+  });
+}
+
 onMounted(() => {
   getAssets();
 });
@@ -48,7 +61,7 @@ onMounted(() => {
         <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1" outline>Create Asset</k-button>
       </div>
 
-      <section v-for="asset in assets">
+      <section v-for="asset in assets" :key="asset.id" class="">
         <k-card   class=" flex flex-col ">
           <section class="flex flex-col gap-1 p-1">
             <h1 class="font-bold text-lg">
@@ -64,6 +77,7 @@ onMounted(() => {
               <span class="font-normal">{{ asset.locationId }}</span></p>
             </div>
             <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
+            <k-button class="w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset.id)" outline >Delete</k-button>
           </section>
 
         </k-card>

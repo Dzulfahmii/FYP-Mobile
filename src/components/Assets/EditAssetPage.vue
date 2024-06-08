@@ -14,6 +14,10 @@ onMounted(() => {
 
 const asset = ref();
 const router = useRouter();
+const owners = ref([]);
+const suppliers = ref([]);
+const locations = ref([]);
+const categories = ref([]);
 const getAsset = () => {
   fetch('http://api-asset.zapzyntax.online/Assets/GetAsset/' + router.currentRoute.value.params.id, {
     method: 'GET',
@@ -27,6 +31,57 @@ const getAsset = () => {
   });
 }
 
+function getOwners(){
+  fetch('http://api-asset.zapzyntax.online/Owner/GetOwners', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    owners.value = data;
+  });
+}
+
+function getSuppliers(){
+  fetch('http://api-asset.zapzyntax.online/Supplier/GetSuppliers', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    suppliers.value = data;
+  });
+}
+
+function getLocations(){
+  fetch('http://api-asset.zapzyntax.online/Location/GetLocations', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    locations.value = data;
+  });
+}
+
+function getCategories() {
+  fetch('http://api-asset.zapzyntax.online/Category/GetCategories', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    categories.value = data;
+  });
+}
 const editAsset = () => {
   fetch('http://api-asset.zapzyntax.online/Assets/UpdateAsset/', {
     method: 'PUT',
