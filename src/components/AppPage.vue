@@ -47,7 +47,6 @@ const logout = () => {
       <transition name="translateX">
         <div class="bg-black/50  fixed  h-full w-full  z-50 " v-show="showMenu">
           <transition name="translateNav">
-
         <div v-show="showMenu" ref="target"   class="z-50  mx-3 my-2 rounded-md  bg-zinc-200  h-fit overflow-hidden menu  w-56  ">
           <!-- Your menu items go here -->
 

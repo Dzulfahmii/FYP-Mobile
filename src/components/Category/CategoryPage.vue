@@ -2,6 +2,7 @@
         <section>
         <k-block-title>Category Asset View</k-block-title>
           <kFab
+              @click="router.push({ name:'createCategory'})"
               class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20 bg-green-600"
           >
             <template #icon>
