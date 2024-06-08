@@ -75,7 +75,7 @@ async function goToSupplier() {
         </template>
         Manage asset locations
       </k-card>
-      <k-card  header="QR Generator | ">
+      <k-card v-if="!Capacitor.isNativePlatform"  header="QR Generator | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'Qr'})">View</k-link>
         </template>
