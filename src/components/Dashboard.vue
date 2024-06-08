@@ -52,7 +52,7 @@ async function goToSupplier() {
       </k-card>
       <k-card  header="Category | ">
         <template #header>
-          <k-link @click="async ()=> await router.push({name:'Category'})">View</k-link>
+          <k-link @click="async ()=> await router.push({name:'categories'})">View</k-link>
         </template>
         Manage asset categories
       </k-card>
