@@ -4,10 +4,20 @@
     <k-block-title class="text-xl">Supplier</k-block-title>
   <k-list>
 
-    <k-list-input label="Name" type="text" placeholder="Company name of the asset">
+    <k-list-input
+        :value="name"
+        @input="e => {
+          name = e.target.value;
+        }"
+        label="Name" type="text" placeholder="Company name of the asset">
       </k-list-input>
 
-        <k-list-input label="Telephone Number" type="phone" placeholder="Telephone number of the supplier">
+        <k-list-input
+            :value="telephoneNumber"
+            @input="e => {
+              telephoneNumber = e.target.value;
+            }"
+            label="Telephone Number" type="phone" placeholder="Telephone number of the supplier">
         </k-list-input>
 
     <section class="flex gap-2 mx-5 my-4">
