@@ -1,6 +1,13 @@
 <template>
         <section>
         <k-block-title>Category Asset View</k-block-title>
+          <kFab
+              class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20 bg-green-600"
+          >
+            <template #icon>
+              <img :src="PlusIcon" alt="plus icon" />
+            </template>
+          </kFab>
         <kCard class ="block overflow-x-auto mt-8">
             <k-table>
                 <k-table-head>
@@ -31,10 +38,12 @@ import {
     kTableRow,
     kTableCell,
     kPage,
-    kNavbar
+    kNavbar,
+    kFab,
 
 
 } from "konsta/vue";
+import PlusIcon from '../../assets/plus-large-svgrepo-com.svg'
 import {useRouter} from "vue-router";
 import category from "./Category.vue";
 
