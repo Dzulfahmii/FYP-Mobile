@@ -30,8 +30,8 @@ const logout = () => {
 
 <template>
   <k-app theme="material">
-    <k-page>
-      <k-navbar title="Asset Management System" class=" " :medium="true">
+    <k-page >
+      <k-navbar title="Asset Management System" class="" :medium="true">
         <template #left>
           <div ref="nav" @click="toggleMenu" class="z-50 hamburger-menu cursor-pointer m-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

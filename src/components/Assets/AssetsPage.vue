@@ -47,12 +47,12 @@ onMounted(() => {
 <template>
   <section class="px-2">
 
-    <k-block-title class="text-xl">
+    <k-block-title class="mx-2 text-xl">
 
       Assets
     </k-block-title>
     <k-list>
-    <div class="bg-lime-300 px-3 py-2 mx-4 my-3 rounded-md flex justify-center">
+    <div class="bg-white border px-3 py-2 mx-5 my-3 rounded-md flex justify-center">
       <div>
         <h1 class="text-2xl font-bold text-center" >{{ assets.length }}</h1>
         <span>Total Assets</span>
@@ -60,11 +60,11 @@ onMounted(() => {
     </div>
       <div class="px-5">
         <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1" outline>Create Asset</k-button>
+        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1 bg-white border-gray-200" outline>Create Asset</k-button>
       </div>
 
       <section v-for="asset in assets" :key="asset.id" class="">
-        <k-card   class=" flex flex-col ">
+        <k-card   class="shadow flex flex-col ">
           <section class="flex flex-col gap-1 p-1">
             <h1 class="font-bold text-lg">
               {{ asset.assetName }}
@@ -78,8 +78,8 @@ onMounted(() => {
               Location: 
               <span class="font-normal">{{ asset.locationId }}</span></p>
             </div>
-            <k-button class="w-full mx-auto" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
-            <k-button class="w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset)" outline >Delete</k-button>
+            <k-button class="bg-white w-full mx-auto border-gray-200" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
+            <k-button class=" border-none w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset)" outline >Delete</k-button>
           </section>
 
         </k-card>

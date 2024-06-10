@@ -3,9 +3,9 @@
     <section>
         <k-block-title class= "mx-2 text-xl">Asset Information</k-block-title>
 
-    <k-list strong  inset>
+    <k-list class="shadow" strong  inset>
       <div class="my-5 mx-5">
-        <k-button @click="()=>router.push({name:'EditAsset', params:{id:asset.id}})" class="" outline>Edit</k-button>
+        <k-button @click="()=>router.push({name:'EditAsset', params:{id:asset.id}})" class="border-gray-200 bg-white" outline>Edit</k-button>
 
       </div>
       <k-list-item class="font-bold border-b" title="Asset Name" >

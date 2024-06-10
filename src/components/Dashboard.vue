@@ -24,19 +24,19 @@ async function goToSupplier() {
 
     <section class=" my-10 md:lg:grid md:lg:grid-cols-2  place-items-stretch gap-1 ">
 
-      <k-card    header="Asset | " footer-divider >
+      <k-card class="shadow"    header="Asset | " footer-divider >
         <template #header>
           <k-link class="" @click="async ()=> await router.push({name:'Assets'})" >View</k-link>
         </template>
         An overview of assets
       </k-card >
-      <k-card  header="Suppliers | ">
+      <k-card class="shadow"  header="Suppliers | ">
         <template #header>
           <k-link @click="goToSupplier" >View</k-link>
         </template>
         Manage suppliers and vendor information
       </k-card>
-      <k-card v-if="Capacitor.isNativePlatform()" header="Asset Scan | ">
+      <k-card class="shadow" v-if="Capacitor.isNativePlatform()" header="Asset Scan | ">
         <template #header>
           <k-link @click=" async () => {
 
@@ -44,25 +44,25 @@ async function goToSupplier() {
         </template>
         Scan assets using QR codes
       </k-card>
-      <k-card  header="Reports | ">
+      <k-card class="shadow" header="Reports | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'Reports'})">View</k-link>
         </template>
         Generate and view reports
       </k-card>
-      <k-card  header="Category | ">
+      <k-card class="shadow" header="Category | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'categories'})">View</k-link>
         </template>
         Manage asset categories
       </k-card>
-      <k-card  header="Location | ">
+      <k-card  class="shadow" header="Location | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'Location'})">View</k-link>
         </template>
         Manage asset locations
       </k-card>
-      <k-card v-if="()=> !Capacitor.isNativePlatform() "  header="QR Generator | ">
+      <k-card class="shadow" v-if="()=> !Capacitor.isNativePlatform() "  header="QR Generator | ">
         <template #header>
           <k-link @click="async ()=> await router.push({name:'Qr'})">View</k-link>
         </template>
