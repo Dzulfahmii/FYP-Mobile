@@ -52,7 +52,7 @@ onMounted(() => {
       Assets
     </k-block-title>
     <k-list>
-    <div class="bg-white border px-3 py-2 mx-5 my-3 rounded-md flex justify-center">
+    <div class="bg-lime-400 border px-3 py-2 mx-5 my-3 rounded-md flex justify-center">
       <div>
         <h1 class="text-2xl font-bold text-center" >{{ assets.length }}</h1>
         <span>Total Assets</span>
@@ -70,13 +70,13 @@ onMounted(() => {
               {{ asset.assetName }}
             </h1>
             <p class="font-bold">
-              Remarks:
+              SKU:
               <span class="font-normal">{{ asset.sku }}</span></p>
             <div class="flex gap-2 items-center w-full">
 
               <p class="font-bold">
-              Location: 
-              <span class="font-normal">{{ asset.locationId }}</span></p>
+              Physical Location ID: 
+              <span class="font-normal"> {{ asset.locationId }}</span></p>
             </div>
             <k-button class="bg-white w-full mx-auto border-gray-200" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
             <k-button class=" border-none w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset)" outline >Delete</k-button>
