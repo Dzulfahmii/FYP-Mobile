@@ -17,6 +17,23 @@ async function goToSupplier() {
   await router.push({ name: 'Suppliers' });
 } // This will navigate to the 'Suppliers' route}
 
+async function getExcel() {
+  fetch('http://api-asset.zapzyntax.online/Assets/GetAssetExcel', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    return response.blob();
+  }).then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'assets.xlsx'; // or any other filename you want
+    a.click();
+  });
+}
+
 </script>
 
 <template>
@@ -68,6 +85,13 @@ async function goToSupplier() {
         </template>
         Generate QR codes for assets
       </k-card>
+      <k-card class="shadow border border-slate-200" v-if="()=> !Capacitor.isNativePlatform() "  header="Excel Export | ">
+        <template #header>
+          <k-link @click="getExcel">Download</k-link>
+        </template>
+        Get Excel file of assets
+      </k-card>
+
     </section>
 
   </div>
