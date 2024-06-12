@@ -115,8 +115,8 @@ const editAsset = () => {
 <template>
   <section>
     <k-block-title class="mx-2 text-xl">Information</k-block-title>
-    <k-list strong inset>
-      <k-list-item class="font-bold border-b" title="Asset Name">
+    <k-list class="shadow border  border-zinc-200" strong inset>
+      <k-list-item class="font-bold border-b " title="Asset Name">
         <template #inner>
           <p class="font-normal">{{ asset?.assetName ?? 'Not Available' }}</p>
         </template>
