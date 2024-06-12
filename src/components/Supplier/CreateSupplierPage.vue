@@ -53,7 +53,11 @@
           telNo: telephoneNumber.value
         })
       }).then(response => {
+        alert('Supplier created successfully');
+        router.push({name: 'Suppliers'})
         console.log(response);
+      }).catch(error => {
+        console.log(error);
       });
     }
     </script>

@@ -60,11 +60,11 @@ onMounted(() => {
     </div>
       <div class="px-5">
         <k-list-input placeholder="Search" class="-mx-4"></k-list-input>
-        <k-button @click="()=>router.push({name:'CreateAsset'})" class="flex-1 bg-white border-gray-200" outline>Create Asset</k-button>
+        <k-button @click="()=>router.push({name:'CreateAsset'})" outline class="flex-1 border border-gray-300" >Create Asset</k-button>
       </div>
 
       <section v-for="asset in assets" :key="asset.id" class="">
-        <k-card   class="shadow flex flex-col ">
+        <k-card   class="shadow flex flex-col border border-zinc-200">
           <section class="flex flex-col gap-1 p-1">
             <h1 class="font-bold text-lg">
               {{ asset.assetName }}
@@ -78,7 +78,7 @@ onMounted(() => {
               Physical Location ID: 
               <span class="font-normal"> {{ asset.locationId }}</span></p>
             </div>
-            <k-button class="bg-white w-full mx-auto border-gray-200" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
+            <k-button class="bg-white w-full mx-auto border-gray-300" @click="router.push({name:'Asset',params:{id:asset.id}})" outline >View</k-button>
             <k-button class=" border-none w-full mx-auto bg-red-600 text-white" @click="deleteAsset(asset)" outline >Delete</k-button>
           </section>
 
