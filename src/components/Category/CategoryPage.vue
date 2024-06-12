@@ -1,6 +1,6 @@
 <template>
         <section>
-        <k-block-title>Category Asset View</k-block-title>
+        <k-block-title class="mx-2 text-xl">Category Asset View</k-block-title>
           <kFab
           
               @click="router.push({ name:'createCategory'})"

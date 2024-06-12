@@ -49,7 +49,7 @@ onMounted(() => {
 
 <template>
   <section>
-    <k-block-title>QR Code Generator</k-block-title>
+    <k-block-title class="mx-2 text-xl">QR Code Generator</k-block-title>
     <k-card class="my-10" >
       <k-list>
         <k-list-input label="Asset"
@@ -62,6 +62,7 @@ onMounted(() => {
                     asset = e.target.value;
                   }"
         >
+          <option value="">Choose Asset</option>
           <option v-for="asset in assets" :key="asset.id" :value="asset.id">{{asset.assetName}}</option>
         </k-list-input>      </k-list>
       <section class="flex gap-2 mx-5 my-4">

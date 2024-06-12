@@ -33,7 +33,7 @@ onMounted(() => {
   <section>
     <k-block-title class="text-xl">Report Asset View</k-block-title>
     
-      <k-card class="my-15" >
+      <k-card class="my-10" >
           <k-list>
               <k-list-item class="font-bold border-b" title="Report Name: " >
                   <template  #inner>

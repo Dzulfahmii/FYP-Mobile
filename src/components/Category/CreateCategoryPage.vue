@@ -1,6 +1,6 @@
 <template>
   <section>
-    <k-block-title>Category</k-block-title>
+    <k-block-title class="mx-2 text-xl">Category</k-block-title>
   <k-list>
     <k-list-input :value="categoryName"
                   @input="categoryName = $event.target.value" label="Category" type="text" placeholder="Category of asset"></k-list-input>

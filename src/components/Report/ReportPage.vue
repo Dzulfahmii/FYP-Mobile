@@ -22,7 +22,7 @@
                 </k-table-head>
                 <k-table-body>
                     <k-table-row v-for="report in reports">
-                        <k-table-cell>{{report.id}}</k-table-cell>
+                        <k-table-cell  >{{report.id}}</k-table-cell>
                         <k-table-cell>{{report.sku}}</k-table-cell>
                         <k-table-cell class="text-right">{{report.reportDate}}</k-table-cell>
                         <k-table-cell class="text-right">{{report.reportDescription}}</k-table-cell>
@@ -55,6 +55,7 @@ import {
 import {useRouter} from "vue-router";
 import PlusIcon from '../../assets/plus-large-svgrepo-com.svg'
 import report from "./Report.vue";
+import owner from "../Owner/Owner.vue";
 
 const reports = ref([]);
 const router = useRouter();

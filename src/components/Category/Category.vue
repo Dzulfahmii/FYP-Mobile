@@ -50,9 +50,9 @@ onMounted(() => {
 
 <template>
   <section>
-    <k-block-title class="text-xl">Category Asset View</k-block-title>
+    <k-block-title class="mx-2 text-xl">Category Asset View</k-block-title>
     
-      <k-card class="my-15" >
+      <k-card class="my-10" >
           <k-list>
               <k-list-item class="font-bold border-b" title="Category Name: " >
                   <template  #inner>
