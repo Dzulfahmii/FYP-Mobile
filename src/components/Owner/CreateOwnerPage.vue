@@ -21,6 +21,7 @@
           telNo: telephoneNumber.value
         })
       }).then(response => {
+        alert('Owner created successfully');
         console.log(response);
       });
     }

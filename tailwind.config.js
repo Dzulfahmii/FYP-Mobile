@@ -8,6 +8,7 @@ export default konstaConfig({
   ],
   theme: {
     extend: {},
+
   },
   plugins: [],
 })

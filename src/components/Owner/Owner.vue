@@ -4,10 +4,12 @@ import {
   kBlockTitle,
   kList,
   kListInput, kApp as KApp, kButton as KButton,
-  kCard, kListItem as KListItem
+  kCard, kListItem as KListItem,
+  kDialog as KDialog,
+  kDialogButton as KDialogButton,
 } from "konsta/vue";
 import {useRouter} from "vue-router";
-
+const dialogOpened = ref(false);
 const owner = ref({});
 const router = useRouter();
 function getOwners(){
@@ -22,7 +24,16 @@ function getOwners(){
     owner.value = data;
   });
 }
-
+const deleteOwner = () => {
+  fetch('http://api-asset.zapzyntax.online/Owner/DeleteOwner/' + router.currentRoute.value.params.id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    router.push({name: 'Owners'});
+  });
+}
 const editOwner = () => {
   fetch('http://api-asset.zapzyntax.online/Owner/UpdateOwner/', {
     method: 'PUT',
@@ -63,9 +74,20 @@ onMounted(() => {
               </template>
               <k-list-input :value="owner?.telNo"
                             @input="owner.telNo = $event.target.value"   placeholder="Edit here" class=""></k-list-input>
-              <div class="mx-3">
+              <div class="mx-4">
                 <k-button class="" @click="editOwner">Apply</k-button>
+                <k-button class="bg-red-600 border-none mt-1" @click="() => dialogOpened = true">Delete</k-button>
               </div>
+              <k-dialog   :opened="dialogOpened" @close="dialogOpened = false">
+                <template #title>Deleting Owner</template>
+                Are you sure you want to delete this owner? This action cannot be undone.
+
+                <template #buttons>
+                  <k-dialog-button @click="dialogOpened = false">Cancel</k-dialog-button>
+                  <k-dialog-button @click="deleteOwner">Delete</k-dialog-button>
+                </template>
+
+              </k-dialog>
             </k-list-item>
           </k-list>
       </k-card>
