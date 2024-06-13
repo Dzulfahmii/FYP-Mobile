@@ -47,7 +47,6 @@ const deleteSupplier = () => {
   //open a modal to confirm delete
 
 
-
   fetch('http://api-asset.zapzyntax.online/Supplier/DeleteSupplier/' + router.currentRoute.value.params.id, {
     method: 'DELETE',
     headers: {

@@ -4,10 +4,13 @@ import {
   kBlockTitle,
   kList,
   kListInput, kApp as KApp, kButton as KButton,
-  kCard, kListItem as KListItem
+  kCard, kListItem as KListItem,
+    kDialog as KDialog,
+    kDialogButton as KDialogButton,
 } from "konsta/vue";
 import {useRouter} from "vue-router";
 
+const dialogOpened = ref(false);
 const category = ref({});
 const router = useRouter();
 function getCategories(){
@@ -22,6 +25,18 @@ function getCategories(){
     category.value = data;
   });
 }
+
+const deleteCategory = () => {
+  fetch('http://api-asset.zapzyntax.online/Category/DeleteCategory/' + router.currentRoute.value.params.id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    router.push({name: 'Categories'});
+  })
+}
+
 
 const editCategory = async () =>{
   let res = await fetch('http://api-asset.zapzyntax.online/Category/UpdateCategory/' , {
@@ -64,9 +79,20 @@ onMounted(() => {
                             @input="category.name = $event.target.value"
                             placeholder="Edit here" class="-mx-5"></k-list-input>
             </div>
-            <div class="flex gap-2 mx-5 my-4">
+            <div class="mx-4">
               <k-button class="px-5  " @click="editCategory">Apply</k-button>
+              <k-button class="bg-red-600 border-none mt-1" @click="() => dialogOpened = true">Delete</k-button>
             </div>
+            <k-dialog   :opened="dialogOpened" @close="dialogOpened = false">
+              <template #title>Deleting Category</template>
+              Are you sure you want to delete this category? This action cannot be undone.
+
+              <template #buttons>
+                <k-dialog-button @click="dialogOpened = false">Cancel</k-dialog-button>
+                <k-dialog-button @click="deleteCategory">Delete</k-dialog-button>
+              </template>
+
+            </k-dialog>
           </k-list>
       </k-card>
       

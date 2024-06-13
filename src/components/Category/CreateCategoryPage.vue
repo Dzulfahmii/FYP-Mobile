@@ -35,7 +35,10 @@
           name: categoryName.value
         })
       }).then(response => {
+        alert('Category created successfully');
         console.log(response);
+      }).catch(error => {
+        console.log(error);
       });
     }
     </script>
